@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
-		<title>StayHub – Landlord dashboard</title>
+		<title>StayHub – Review and submit</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap"
 			rel="stylesheet"
@@ -528,12 +528,66 @@
 				stroke-linecap: round;
 				stroke-linejoin: round;
 			}
+			.rh {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.rh h2 {
+				margin: 0;
+			}
+			.rt2 {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.rt2 th {
+				text-align: left;
+				font-size: 13px;
+				color: var(--muted);
+				font-weight: 600;
+				padding: 0 8px 10px 0;
+			}
+			.rt2 td {
+				padding: 11px 8px 11px 0;
+				border-top: 1px solid var(--line);
+			}
+			.rt2 .r {
+				text-align: right;
+				padding-right: 0;
+			}
+			.rt2 tfoot td {
+				font-weight: 600;
+			}
+			.ck {
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+			}
+			.ck label {
+				display: flex;
+				gap: 12px;
+				align-items: flex-start;
+				cursor: pointer;
+			}
+			.ck input {
+				width: 20px;
+				height: 20px;
+				margin-top: 2px;
+				accent-color: var(--green);
+				flex: none;
+			}
 			.tag {
 				font-size: 12px;
 				color: var(--muted);
 				margin-top: 26px;
 			}
 			@media (max-width: 860px) {
+				.rt2 th:nth-child(2),
+				.rt2 td:nth-child(2) {
+					display: none;
+				}
 				.app {
 					grid-template-columns: 1fr;
 				}
@@ -655,10 +709,10 @@
 				<main>
 					<div class="head">
 						<div>
-							<h1>Add a property</h1>
+							<h1>Review and submit</h1>
 							<p>
-								Your listing goes live after the StayHub team
-								reviews it.
+								One last check. Your listing goes live after the
+								StayHub team reviews it.
 							</p>
 						</div>
 						<button class="btn g" id="save" type="button">
@@ -690,18 +744,22 @@
 				"Laundry area",
 				"Parking",
 			];
-			let step = 0,
+			let step = 3,
 				d = {
-					name: "",
-					desc: "",
-					uni: "",
-					loc: "",
-					addr: "",
-					gender: "",
-					photos: 3,
-					am: ["Water supply", "Solar backup"],
+					name: "The Haven Studios",
+					desc: "Modern student studios a short walk from campus, with reliable water and solar backup.",
+					uni: "University A",
+					loc: "Akoka",
+					addr: "12 Example Street",
+					gender: "Option 1",
+					photos: 4,
+					am: ["Water supply", "Solar backup", "Study space"],
 					rules: "Quiet hours 10pm–7am. No smoking.",
-					rooms: [{ n: "Room 1", t: "Single room", p: "" }],
+					rooms: [
+						{ n: "Room 1", t: "Single room", p: "450000" },
+						{ n: "Room 2", t: "Single room", p: "450000" },
+						{ n: "Room 3", t: "Studio", p: "600000" },
+					],
 				},
 				submitted = false;
 			const $ = (s) => document.querySelector(s),
@@ -819,12 +877,17 @@
 					v.innerHTML = `<div class="card"><h2>Rooms and pricing</h2><p class="sub">Add each bookable room. Prices are per year, in naira (₦).</p><table class="rooms"><thead><tr><th>Room name</th><th>Type</th><th>Price per year</th><th></th></tr></thead><tbody>${d.rooms.map((r, i) => `<tr class="rr"><td><input type="text" class="rn" aria-label="Room name" value="${r.n}"></td><td><select class="rt" aria-label="Room type">${["Single room", "Studio", "Shared room"].map((t) => `<option ${t == r.t ? "selected" : ""}>${t}</option>`).join("")}</select></td><td><div class="pre"><b>₦</b><input type="number" class="rp" aria-label="Price per year" value="${r.p}" min="0" placeholder="0"></div></td><td><button class="x" type="button" aria-label="Remove room" onclick="rm(${i})">×</button></td></tr>`).join("")}</tbody></table>
 <div style="margin-top:12px"><button class="btn g" type="button" onclick="add()">+ Add room</button></div><div class="note">Rooms start as <b>Available</b>. You can change a room's availability from the Rooms page after approval.</div></div>`;
 				if (step == 3) {
-					const tot = d.rooms.length;
-					v.innerHTML = `<div class="card"><h2>Review your listing</h2><p class="sub">Check everything before you send it to the StayHub team.</p><dl class="sum">
-<dt>Property</dt><dd>${d.name}</dd><dt>Location</dt><dd>${d.addr}, ${d.loc} · near ${d.uni}</dd><dt>Gender policy</dt><dd>${d.gender}</dd>
-<dt>Photos</dt><dd>${d.photos} added</dd><dt>Amenities</dt><dd>${d.am.join(", ") || "None selected"}</dd><dt>House rules</dt><dd>${d.rules || "None"}</dd>
-<dt>Rooms</dt><dd>${tot} room${tot > 1 ? "s" : ""}: ${d.rooms.map((r) => `${r.n} (${r.t}, ${naira(r.p)} / year)`).join("; ")}</dd></dl>
-<div class="note">After you submit, the listing is <b>Pending review</b> and won't appear in public search until it's approved.</div></div>`;
+					const tot = d.rooms.length,
+						ed = (n) =>
+							`<button class="btn t" type="button" onclick="goto(${n})">Edit</button>`;
+					v.innerHTML = `<div class="card"><div class="rh"><div><h2>Review your listing</h2><p class="sub" style="margin:0">Check everything before you send it to the StayHub team.</p></div><span class="badge b-draft"><span>Draft</span></span></div></div>
+<div class="card"><div class="rh"><h2>Details</h2>${ed(0)}</div><dl class="sum"><dt>Property</dt><dd>${d.name}</dd><dt>Description</dt><dd>${d.desc || "–"}</dd><dt>Nearest university</dt><dd>${d.uni}</dd><dt>Address</dt><dd>${d.addr}, ${d.loc}</dd><dt>Gender policy</dt><dd>${d.gender}</dd></dl></div>
+<div class="card"><div class="rh"><h2>Photos and amenities</h2>${ed(1)}</div><div class="thumbs" style="margin:0 0 20px">${Array.from({ length: d.photos }, (_, i) => `<div class="th">Photo ${i + 1}${i == 0 ? "<i>Cover</i>" : ""}</div>`).join("")}</div>
+<dl class="sum"><dt>Amenities</dt><dd>${d.am.join(", ") || "None selected"}</dd><dt>House rules</dt><dd>${d.rules || "None"}</dd></dl></div>
+<div class="card"><div class="rh"><h2>Rooms and pricing</h2>${ed(2)}</div><table class="rt2"><thead><tr><th>Room</th><th>Type</th><th>Starts as</th><th class="r">Price per year</th></tr></thead><tbody>${d.rooms.map((r) => `<tr><td>${r.n}</td><td>${r.t}</td><td><span class="badge b-ok"><span>Available</span></span></td><td class="r">${naira(r.p)}</td></tr>`).join("")}</tbody><tfoot><tr><td colspan="3">Total rooms</td><td class="r">${tot}</td></tr></tfoot></table>
+<p class="sub" style="margin:14px 0 0;font-size:13px">Prices are in naira (₦) for a one-year stay. Tenants see exactly these prices.</p></div>
+<div class="card"><h2>Before you submit</h2><div class="ck"><label><input type="checkbox" id="c1"><span>I confirm the details and photos are accurate and show the real property.</span></label><label><input type="checkbox" id="c2"><span>I agree to the StayHub <a href="#" style="color:var(--green)">terms for landlords</a>.</span></label></div>
+<div class="note">After you submit, the listing is <b>Pending review</b> and won't appear in public search until the StayHub team approves it.</div></div>`;
 				}
 				nav();
 			}
@@ -840,14 +903,40 @@
 						draw();
 					}
 				};
-				$("#nx").onclick = () => {
-					read();
-					if (!valid()) return;
-					if (step == 3) {
-						submitted = true;
-					} else step++;
-					draw();
-				};
+				const nx = $("#nx");
+				if (step == 3) {
+					const c1 = $("#c1"),
+						c2 = $("#c2"),
+						t = () => {
+							nx.disabled = !(c1.checked && c2.checked);
+							nx.style.opacity = nx.disabled ? 0.45 : 1;
+							nx.style.cursor = nx.disabled
+								? "not-allowed"
+								: "pointer";
+						};
+					c1.onchange = c2.onchange = t;
+					t();
+					nx.onclick = () => {
+						if (nx.disabled) return;
+						nx.disabled = true;
+						nx.textContent = "Submitting…";
+						$("#bk").disabled = true;
+						setTimeout(() => {
+							submitted = true;
+							draw();
+						}, 1200);
+					};
+				} else
+					nx.onclick = () => {
+						read();
+						if (!valid()) return;
+						step++;
+						draw();
+					};
+			}
+			function goto(n) {
+				step = n;
+				draw();
 			}
 			function add() {
 				read();
