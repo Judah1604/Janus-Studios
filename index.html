@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
-		<title>StayHub – Review and submit</title>
+		<title>StayHub – Rooms</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap"
 			rel="stylesheet"
@@ -528,66 +528,12 @@
 				stroke-linecap: round;
 				stroke-linejoin: round;
 			}
-			.rh {
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
-				gap: 12px;
-				margin-bottom: 14px;
-			}
-			.rh h2 {
-				margin: 0;
-			}
-			.rt2 {
-				width: 100%;
-				border-collapse: collapse;
-			}
-			.rt2 th {
-				text-align: left;
-				font-size: 13px;
-				color: var(--muted);
-				font-weight: 600;
-				padding: 0 8px 10px 0;
-			}
-			.rt2 td {
-				padding: 11px 8px 11px 0;
-				border-top: 1px solid var(--line);
-			}
-			.rt2 .r {
-				text-align: right;
-				padding-right: 0;
-			}
-			.rt2 tfoot td {
-				font-weight: 600;
-			}
-			.ck {
-				display: flex;
-				flex-direction: column;
-				gap: 14px;
-			}
-			.ck label {
-				display: flex;
-				gap: 12px;
-				align-items: flex-start;
-				cursor: pointer;
-			}
-			.ck input {
-				width: 20px;
-				height: 20px;
-				margin-top: 2px;
-				accent-color: var(--green);
-				flex: none;
-			}
 			.tag {
 				font-size: 12px;
 				color: var(--muted);
 				margin-top: 26px;
 			}
 			@media (max-width: 860px) {
-				.rt2 th:nth-child(2),
-				.rt2 td:nth-child(2) {
-					display: none;
-				}
 				.app {
 					grid-template-columns: 1fr;
 				}
@@ -635,6 +581,306 @@
 					padding: 0;
 				}
 			}
+
+			.stats {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 14px;
+				margin-bottom: 22px;
+			}
+			.stat {
+				background: var(--card);
+				border: 1px solid var(--line);
+				border-radius: 16px;
+				padding: 16px 18px;
+				text-align: left;
+				font: inherit;
+				color: inherit;
+				cursor: pointer;
+			}
+			.stat:hover {
+				border-color: var(--text);
+			}
+			.stat[aria-pressed="true"] {
+				border-color: var(--green);
+				box-shadow: 0 0 0 1px var(--green);
+			}
+			.stat b {
+				display: block;
+				font: 600 30px var(--h);
+				line-height: 1.1;
+			}
+			.stat span {
+				color: var(--muted);
+				font-size: 14px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 3px;
+				display: inline-block;
+			}
+			.d-a {
+				background: var(--ok);
+			}
+			.d-b {
+				background: var(--bad);
+			}
+			.d-u {
+				background: var(--off);
+			}
+			.d-t {
+				background: var(--text);
+			}
+			.tools {
+				display: flex;
+				gap: 12px;
+				align-items: center;
+				flex-wrap: wrap;
+				margin-bottom: 18px;
+			}
+			.tools select {
+				width: auto;
+				min-width: 160px;
+			}
+			.tools .prev {
+				margin-left: auto;
+				display: flex;
+				gap: 8px;
+				align-items: center;
+				font-size: 13px;
+				color: var(--muted);
+			}
+			.rgrid {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 14px;
+			}
+			.tile {
+				background: var(--card);
+				border: 1px solid var(--line);
+				border-left: 6px solid var(--off);
+				border-radius: 12px;
+				padding: 14px 16px;
+				text-align: left;
+				font: inherit;
+				color: inherit;
+				cursor: pointer;
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+			}
+			.tile:hover {
+				border-color: var(--text);
+				border-left-color: inherit;
+			}
+			.tile.a {
+				border-left-color: var(--ok);
+			}
+			.tile.b {
+				border-left-color: var(--bad);
+			}
+			.tile.u {
+				border-left-color: var(--off);
+			}
+			.tile.sel {
+				outline: 3px solid var(--green);
+				outline-offset: 2px;
+			}
+			.tile .n {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font: 600 18px var(--h);
+			}
+			.tile .m {
+				color: var(--muted);
+				font-size: 13px;
+			}
+			.tile .pr {
+				font-weight: 600;
+				margin-top: 4px;
+			}
+			.sl {
+				display: inline-flex;
+				align-items: center;
+				gap: 7px;
+				font: 600 13px var(--b);
+			}
+			.sl:before {
+				content: "";
+				width: 9px;
+				height: 9px;
+				border-radius: 3px;
+				background: currentColor;
+			}
+			.sl.a {
+				color: var(--ok);
+			}
+			.sl.b {
+				color: var(--bad);
+			}
+			.sl.u {
+				color: var(--off);
+			}
+			.sl.b:before {
+				border-radius: 50%;
+			}
+			.sl.u:before {
+				border-radius: 0;
+				transform: rotate(45deg);
+			}
+			.tile svg {
+				width: 16px;
+				height: 16px;
+				stroke: var(--muted);
+				fill: none;
+				stroke-width: 2;
+			}
+			.sk {
+				height: 104px;
+				border-radius: 12px;
+				background: linear-gradient(
+					90deg,
+					var(--line),
+					var(--soft),
+					var(--line)
+				);
+				background-size: 200% 100%;
+				animation: sh 1.2s infinite;
+			}
+			@keyframes sh {
+				to {
+					background-position: -200% 0;
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.sk {
+					animation: none;
+				}
+			}
+			.msg {
+				border: 1px dashed var(--line);
+				border-radius: 16px;
+				padding: 44px 20px;
+				text-align: center;
+				background: var(--card);
+			}
+			.msg h3 {
+				font-size: 22px;
+				margin-bottom: 6px;
+			}
+			.msg p {
+				color: var(--muted);
+				margin: 0 0 18px;
+			}
+			.msg.e {
+				border: 1px solid var(--bad);
+				border-style: solid;
+			}
+			.key {
+				display: flex;
+				gap: 20px;
+				flex-wrap: wrap;
+				margin-top: 22px;
+				font-size: 13px;
+				color: var(--muted);
+			}
+			.bd {
+				position: fixed;
+				inset: 0;
+				background: rgba(10, 15, 9, 0.45);
+				display: none;
+				z-index: 20;
+			}
+			.bd.on {
+				display: block;
+			}
+			.pn {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				width: 400px;
+				max-width: 100%;
+				background: var(--card);
+				border-left: 1px solid var(--line);
+				z-index: 21;
+				padding: 24px;
+				overflow: auto;
+				transform: translateX(100%);
+				visibility: hidden;
+				transition: transform 0.2s;
+			}
+			.pn.on {
+				transform: none;
+				visibility: visible;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.pn {
+					transition: none;
+				}
+			}
+			.pn .x {
+				float: right;
+			}
+			.pn h2 {
+				font-size: 26px;
+				margin: 4px 0 10px;
+			}
+			.pn .sum {
+				grid-template-columns: 130px 1fr;
+				margin: 18px 0;
+			}
+			.confirm {
+				background: var(--soft);
+				border-radius: 12px;
+				padding: 14px 16px;
+				margin-top: 14px;
+			}
+			.confirm p {
+				margin: 0 0 12px;
+			}
+			.confirm .row {
+				display: flex;
+				gap: 10px;
+			}
+			.exp {
+				color: var(--wait);
+				font-weight: 600;
+			}
+			.toast {
+				position: fixed;
+				left: 50%;
+				bottom: 24px;
+				transform: translateX(-50%);
+				background: var(--black);
+				color: #fff;
+				padding: 12px 18px;
+				border-radius: 10px;
+				z-index: 30;
+				display: none;
+				max-width: 90%;
+			}
+			@media (max-width: 1000px) {
+				.rgrid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+			@media (max-width: 700px) {
+				.rgrid {
+					grid-template-columns: 1fr 1fr;
+				}
+				.stats {
+					grid-template-columns: 1fr 1fr;
+				}
+				.tools .prev {
+					margin-left: 0;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -657,12 +903,12 @@
 						<rect x="3" y="16" width="7" height="5" rx="2" /></svg
 					>Overview</a
 				>
-				<a href="#" aria-current="page"
+				<a href="#"
 					><svg viewBox="0 0 24 24">
 						<path d="M4 11l8-7 8 7v9H4z" /></svg
 					>My properties</a
 				>
-				<a href="#"
+				<a href="#" aria-current="page"
 					><svg viewBox="0 0 24 24">
 						<rect x="4" y="4" width="7" height="7" rx="2" />
 						<rect x="13" y="4" width="7" height="7" rx="2" />
@@ -701,266 +947,322 @@
 			<div>
 				<div class="top">
 					<span class="crumb"
-						>My properties /
-						<b style="color: var(--text)">Add property</b></span
+						><b style="color: var(--text)">Rooms</b></span
 					><span class="sp"></span
-					><span class="badge b-draft"><span>Draft</span></span>
+					><span class="badge b-ok"><span>Approved</span></span>
 				</div>
 				<main>
 					<div class="head">
 						<div>
-							<h1>Review and submit</h1>
+							<h1>Rooms</h1>
 							<p>
-								One last check. Your listing goes live after the
-								StayHub team reviews it.
+								See which rooms are free, booked or switched
+								off.
 							</p>
 						</div>
-						<button class="btn g" id="save" type="button">
-							Save draft
-						</button>
 					</div>
-					<ol class="steps" id="st"></ol>
-					<div id="v"></div>
+					<div class="tools">
+						<label
+							class="f"
+							style="
+								flex-direction: row;
+								align-items: center;
+								gap: 10px;
+							"
+							>Property<select id="prop">
+								<option>The Haven Studios</option>
+								<option>Palm Court Living</option>
+							</select></label
+						>
+						<label
+							class="f"
+							style="
+								flex-direction: row;
+								align-items: center;
+								gap: 10px;
+							"
+							>Room type<select id="ty">
+								<option value="">All types</option>
+								<option>Single room</option>
+								<option>Studio</option>
+								<option>Shared room</option>
+							</select></label
+						>
+						<div class="prev">
+							<label for="ps">Preview state (design only)</label
+							><select id="ps">
+								<option value="n">Normal</option>
+								<option value="l">Loading</option>
+								<option value="e">Empty</option>
+								<option value="x">Error</option>
+							</select>
+						</div>
+					</div>
+					<div class="stats" id="stats"></div>
+					<div id="g" aria-live="polite"></div>
+					<div class="key">
+						<span class="sl a">Available: can be booked</span
+						><span class="sl b">Booked: paid, locked</span
+						><span class="sl u"
+							>Unavailable: switched off by you</span
+						>
+					</div>
 					<p class="tag">
-						Sample data shown for design purposes only.
+						Sample data shown for design purposes only. A room
+						becomes Booked only after StayHub verifies the tenant's
+						payment.
 					</p>
 				</main>
 			</div>
 		</div>
+		<div class="bd" id="bd"></div>
+		<aside
+			class="pn"
+			id="pn"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Room details"
+		></aside>
+		<div class="toast" id="tt" role="status"></div>
 		<script>
-			const S = [
-				"Details",
-				"Photos and amenities",
-				"Rooms and pricing",
-				"Review and submit",
+			const NAMES = [
+				"Amaka O.",
+				"Tunde A.",
+				"Ngozi E.",
+				"Ibrahim S.",
+				"Chidera N.",
+				"Bola K.",
+				"Funke A.",
 			];
-			const AM = [
-				"Water supply",
-				"Solar backup",
-				"Study space",
-				"Wi-Fi",
-				"Security",
-				"Shared kitchen",
-				"Laundry area",
-				"Parking",
-			];
-			let step = 3,
-				d = {
-					name: "The Haven Studios",
-					desc: "Modern student studios a short walk from campus, with reliable water and solar backup.",
-					uni: "University A",
-					loc: "Akoka",
-					addr: "12 Example Street",
-					gender: "Option 1",
-					photos: 4,
-					am: ["Water supply", "Solar backup", "Study space"],
-					rules: "Quiet hours 10pm–7am. No smoking.",
-					rooms: [
-						{ n: "Room 1", t: "Single room", p: "450000" },
-						{ n: "Room 2", t: "Single room", p: "450000" },
-						{ n: "Room 3", t: "Studio", p: "600000" },
-					],
+			const naira = (n) => "₦" + Number(n).toLocaleString("en-NG"),
+				TODAY = new Date("2026-11-18");
+			const fmt = (s) =>
+				new Date(s).toLocaleDateString("en-GB", {
+					day: "numeric",
+					month: "short",
+					year: "numeric",
+				});
+			const LBL = { a: "Available", b: "Booked", u: "Unavailable" };
+			function gen(n, off) {
+				const st = [
+					"b",
+					"a",
+					"a",
+					"b",
+					"u",
+					"a",
+					"b",
+					"b",
+					"a",
+					"a",
+					"b",
+					"a",
+					"u",
+					"b",
+					"a",
+					"a",
+				];
+				return Array.from({ length: n }, (_, i) => {
+					const s = st[(i + off) % 16],
+						t =
+							i < n * 0.6
+								? "Single room"
+								: i < n * 0.85
+									? "Studio"
+									: "Shared room",
+						p =
+							t == "Single room"
+								? 450000
+								: t == "Studio"
+									? 600000
+									: 300000;
+					const r = {
+						id: i,
+						name: "Room " + (i + 1),
+						type: t,
+						price: p,
+						s,
+					};
+					if (s == "b") {
+						r.tn = NAMES[i % 7];
+						r.ref = "SH-" + (24100 + i * 7);
+						r.st = "2026-09-01";
+						r.en = i == 3 ? "2026-12-15" : "2027-08-31";
+					}
+					return r;
+				});
+			}
+			let data = {
+					"The Haven Studios": gen(16, 0),
+					"Palm Court Living": gen(8, 3),
 				},
-				submitted = false;
+				f = "all",
+				sel = null,
+				ps = "n",
+				conf = false;
 			const $ = (s) => document.querySelector(s),
-				v = $("#v");
-			const opt = (a, x, ph) =>
-				`<option value="">${ph}</option>` +
-				a
+				cur = () => data[$("#prop").value];
+			const ic =
+				'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
+			function draw() {
+				const all = cur(),
+					c = { all: all.length, a: 0, b: 0, u: 0 };
+				all.forEach((r) => c[r.s]++);
+				$("#stats").innerHTML = [
+					["all", "Total rooms", "t"],
+					["a", "Available", "a"],
+					["b", "Booked", "b"],
+					["u", "Unavailable", "u"],
+				]
 					.map(
-						(o) =>
-							`<option ${o == x ? "selected" : ""}>${o}</option>`,
+						([k, l, d]) =>
+							`<button class="stat" data-f="${k}" aria-pressed="${f == k}"><span><i class="dot d-${d}"></i>${l}</span><b>${ps == "n" ? c[k] : "–"}</b></button>`,
 					)
 					.join("");
-			const naira = (n) => "₦" + Number(n).toLocaleString("en-NG");
-			function stepper() {
-				$("#st").innerHTML = S.map(
-					(s, i) =>
-						`<li class="${i == step ? "on" : i < step ? "done" : ""}" ${i == step ? 'aria-current="step"' : ""}><b>${i < step ? "✓" : i + 1}</b>${s}</li>`,
-				).join("");
-			}
-			function er(id, m) {
-				const e = $("#" + id);
-				if (e) {
-					e.classList.add("inv");
-					e.nextElementSibling.textContent = m;
-				}
-			}
-			function read() {
-				if (step == 0) {
-					["name", "desc", "uni", "loc", "addr", "gender"].forEach(
-						(k) => {
-							const e = $("#" + k);
-							if (e) d[k] = e.value;
-						},
-					);
-				}
-				if (step == 1) {
-					d.am = [
-						...document.querySelectorAll(".chips input:checked"),
-					].map((x) => x.value);
-					d.rules = $("#rules").value;
-				}
-				if (step == 2) {
-					d.rooms = [...document.querySelectorAll("tr.rr")].map(
-						(r) => ({
-							n: r.querySelector(".rn").value,
-							t: r.querySelector(".rt").value,
-							p: r.querySelector(".rp").value,
+				document.querySelectorAll(".stat").forEach(
+					(b) =>
+						(b.onclick = () => {
+							f = b.dataset.f;
+							draw();
 						}),
-					);
-				}
-			}
-			function valid() {
-				let ok = true;
-				if (step == 0) {
-					[
-						["name", "Enter the property name"],
-						["uni", "Choose the nearest university"],
-						["loc", "Enter the area"],
-						["addr", "Enter the full address"],
-						["gender", "Choose a gender policy"],
-					].forEach(([k, m]) => {
-						if (!d[k].trim()) {
-							er(k, m);
-							ok = false;
-						}
-					});
-				}
-				if (step == 2) {
-					document.querySelectorAll("tr.rr").forEach((r, i) => {
-						const p = r.querySelector(".rp"),
-							n = r.querySelector(".rn");
-						if (!n.value.trim()) {
-							er2(n, "Add a room name");
-							ok = false;
-						}
-						if (!(Number(p.value) > 0)) {
-							er2(p, "Enter a yearly price in naira");
-							ok = false;
-						}
-					});
-				}
-				return ok;
-			}
-			function er2(el, m) {
-				el.classList.add("inv");
-				let e = el.closest("td").querySelector(".err");
-				if (!e) {
-					e = document.createElement("div");
-					e.className = "err";
-					el.closest("td").appendChild(e);
-				}
-				e.textContent = m;
-			}
-			function draw() {
-				stepper();
-				window.scrollTo(0, 0);
-				if (submitted) {
-					v.innerHTML = `<div class="card ok"><div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div><h2>Your property is under review</h2><p>We'll email you when it's approved, or if we need changes. It won't show in search until then.</p><span class="badge b-wait"><span>Pending review</span></span><br><br><button class="btn" onclick="location.reload()">Back to my properties</button></div>`;
+				);
+				const g = $("#g"),
+					ty = $("#ty").value;
+				if (ps == "l") {
+					g.innerHTML =
+						'<div class="rgrid">' +
+						'<div class="sk"></div>'.repeat(8) +
+						"</div>";
 					return;
 				}
-				if (step == 0)
-					v.innerHTML = `<div class="card"><h2>Property details</h2><p class="sub">Tell students what this place is and where to find it.</p><div class="grid">
-<label class="f full">Property name<input type="text" id="name" value="${d.name}" placeholder="e.g. The Haven Studios"><span class="err"></span></label>
-<label class="f full">Description<small>What makes it a good place to live?</small><textarea id="desc">${d.desc}</textarea></label>
-<label class="f">Nearest university<select id="uni">${opt(["University A", "University B"], d.uni, "Choose a university")}</select><span class="err"></span></label>
-<label class="f">Area<input type="text" id="loc" value="${d.loc}" placeholder="e.g. Akoka"><span class="err"></span></label>
-<label class="f full">Full address<input type="text" id="addr" value="${d.addr}"><span class="err"></span></label>
-<label class="f">Gender policy<select id="gender">${opt(["Option 1", "Option 2"], d.gender, "Choose a policy")}</select><span class="err"></span></label></div></div>`;
-				if (step == 1)
-					v.innerHTML = `<div class="card"><h2>Photos</h2><p class="sub">Use real photos of the actual rooms. Listings with misleading photos are sent back.</p><div class="drop">Drag photos here or <b style="color:var(--green)">browse</b><br>JPG or PNG, up to 10 MB each</div>
-<div class="thumbs">${Array.from({ length: d.photos }, (_, i) => `<div class="th">Photo ${i + 1}${i == 0 ? "<i>Cover</i>" : ""}</div>`).join("")}</div></div>
-<div class="card"><h2>Amenities</h2><p class="sub">Select everything that applies.</p><div class="chips">${AM.map((a) => `<label><input type="checkbox" value="${a}" ${d.am.includes(a) ? "checked" : ""}><span>${a}</span></label>`).join("")}</div></div>
-<div class="card"><h2>House rules</h2><p class="sub">Students see these before they book.</p><textarea id="rules" aria-label="House rules">${d.rules}</textarea></div>`;
-				if (step == 2)
-					v.innerHTML = `<div class="card"><h2>Rooms and pricing</h2><p class="sub">Add each bookable room. Prices are per year, in naira (₦).</p><table class="rooms"><thead><tr><th>Room name</th><th>Type</th><th>Price per year</th><th></th></tr></thead><tbody>${d.rooms.map((r, i) => `<tr class="rr"><td><input type="text" class="rn" aria-label="Room name" value="${r.n}"></td><td><select class="rt" aria-label="Room type">${["Single room", "Studio", "Shared room"].map((t) => `<option ${t == r.t ? "selected" : ""}>${t}</option>`).join("")}</select></td><td><div class="pre"><b>₦</b><input type="number" class="rp" aria-label="Price per year" value="${r.p}" min="0" placeholder="0"></div></td><td><button class="x" type="button" aria-label="Remove room" onclick="rm(${i})">×</button></td></tr>`).join("")}</tbody></table>
-<div style="margin-top:12px"><button class="btn g" type="button" onclick="add()">+ Add room</button></div><div class="note">Rooms start as <b>Available</b>. You can change a room's availability from the Rooms page after approval.</div></div>`;
-				if (step == 3) {
-					const tot = d.rooms.length,
-						ed = (n) =>
-							`<button class="btn t" type="button" onclick="goto(${n})">Edit</button>`;
-					v.innerHTML = `<div class="card"><div class="rh"><div><h2>Review your listing</h2><p class="sub" style="margin:0">Check everything before you send it to the StayHub team.</p></div><span class="badge b-draft"><span>Draft</span></span></div></div>
-<div class="card"><div class="rh"><h2>Details</h2>${ed(0)}</div><dl class="sum"><dt>Property</dt><dd>${d.name}</dd><dt>Description</dt><dd>${d.desc || "–"}</dd><dt>Nearest university</dt><dd>${d.uni}</dd><dt>Address</dt><dd>${d.addr}, ${d.loc}</dd><dt>Gender policy</dt><dd>${d.gender}</dd></dl></div>
-<div class="card"><div class="rh"><h2>Photos and amenities</h2>${ed(1)}</div><div class="thumbs" style="margin:0 0 20px">${Array.from({ length: d.photos }, (_, i) => `<div class="th">Photo ${i + 1}${i == 0 ? "<i>Cover</i>" : ""}</div>`).join("")}</div>
-<dl class="sum"><dt>Amenities</dt><dd>${d.am.join(", ") || "None selected"}</dd><dt>House rules</dt><dd>${d.rules || "None"}</dd></dl></div>
-<div class="card"><div class="rh"><h2>Rooms and pricing</h2>${ed(2)}</div><table class="rt2"><thead><tr><th>Room</th><th>Type</th><th>Starts as</th><th class="r">Price per year</th></tr></thead><tbody>${d.rooms.map((r) => `<tr><td>${r.n}</td><td>${r.t}</td><td><span class="badge b-ok"><span>Available</span></span></td><td class="r">${naira(r.p)}</td></tr>`).join("")}</tbody><tfoot><tr><td colspan="3">Total rooms</td><td class="r">${tot}</td></tr></tfoot></table>
-<p class="sub" style="margin:14px 0 0;font-size:13px">Prices are in naira (₦) for a one-year stay. Tenants see exactly these prices.</p></div>
-<div class="card"><h2>Before you submit</h2><div class="ck"><label><input type="checkbox" id="c1"><span>I confirm the details and photos are accurate and show the real property.</span></label><label><input type="checkbox" id="c2"><span>I agree to the StayHub <a href="#" style="color:var(--green)">terms for landlords</a>.</span></label></div>
-<div class="note">After you submit, the listing is <b>Pending review</b> and won't appear in public search until the StayHub team approves it.</div></div>`;
+				if (ps == "x") {
+					g.innerHTML =
+						"<div class=\"msg e\" role=\"alert\"><h3>We couldn't load your rooms</h3><p>Check your connection and try again. Your room data hasn't changed.</p><button class=\"btn\" onclick=\"$('#ps').value='n';ps='n';draw()\">Try again</button></div>";
+					return;
 				}
-				nav();
+				let list =
+					ps == "e"
+						? []
+						: all.filter(
+								(r) =>
+									(f == "all" || r.s == f) &&
+									(!ty || r.type == ty),
+							);
+				if (!list.length) {
+					g.innerHTML = `<div class="msg"><h3>${ps == "e" ? "No rooms added yet" : "No rooms match this filter"}</h3><p>${ps == "e" ? "Add rooms to your property so students can book them." : "Try a different status or room type."}</p><button class="btn g" onclick="rs()">${ps == "e" ? "Add rooms" : "Clear filters"}</button></div>`;
+					return;
+				}
+				g.innerHTML =
+					'<div class="rgrid">' +
+					list
+						.map(
+							(r) =>
+								`<button class="tile ${r.s}${sel == r.id ? " sel" : ""}" data-i="${r.id}" aria-label="${r.name}, ${r.type}, ${LBL[r.s]}"><div class="n">${r.name}${r.s == "b" ? ic : ""}</div><span class="sl ${r.s}">${LBL[r.s]}</span><span class="m">${r.type}</span><span class="pr">${naira(r.price)} <span class="m" style="font-weight:400">/ year</span></span></button>`,
+						)
+						.join("") +
+					"</div>";
+				document
+					.querySelectorAll(".tile")
+					.forEach((t) => (t.onclick = () => open(+t.dataset.i)));
 			}
-			function nav() {
-				v.insertAdjacentHTML(
-					"beforeend",
-					`<div class="bar"><button class="btn g" type="button" id="bk" ${step == 0 ? "disabled style='opacity:.4;cursor:default'" : ""}>Back</button><button class="btn" type="button" id="nx">${step == 3 ? "Submit for review" : "Continue"}</button></div>`,
-				);
-				$("#bk").onclick = () => {
-					if (step > 0) {
-						read();
-						step--;
-						draw();
-					}
-				};
-				const nx = $("#nx");
-				if (step == 3) {
-					const c1 = $("#c1"),
-						c2 = $("#c2"),
-						t = () => {
-							nx.disabled = !(c1.checked && c2.checked);
-							nx.style.opacity = nx.disabled ? 0.45 : 1;
-							nx.style.cursor = nx.disabled
-								? "not-allowed"
-								: "pointer";
-						};
-					c1.onchange = c2.onchange = t;
-					t();
-					nx.onclick = () => {
-						if (nx.disabled) return;
-						nx.disabled = true;
-						nx.textContent = "Submitting…";
-						$("#bk").disabled = true;
-						setTimeout(() => {
-							submitted = true;
-							draw();
-						}, 1200);
-					};
+			function rs() {
+				f = "all";
+				$("#ty").value = "";
+				if (ps == "e") {
+					ps = "n";
+					$("#ps").value = "n";
+				}
+				draw();
+			}
+			function open(i) {
+				sel = i;
+				conf = false;
+				panel();
+				$("#pn").classList.add("on");
+				$("#bd").classList.add("on");
+				draw();
+				$("#cl").focus();
+			}
+			function close() {
+				sel = null;
+				$("#pn").classList.remove("on");
+				$("#bd").classList.remove("on");
+				draw();
+			}
+			function panel() {
+				const r = cur().find((x) => x.id == sel);
+				if (!r) return;
+				let body = "";
+				if (r.s == "b") {
+					const days = Math.round((new Date(r.en) - TODAY) / 864e5);
+					body = `<dl class="sum"><dt>Tenant</dt><dd>${r.tn}</dd><dt>Booking ref</dt><dd>${r.ref}</dd><dt>Payment</dt><dd>Paid and verified</dd><dt>Tenancy starts</dt><dd>${fmt(r.st)}</dd><dt>Tenancy ends</dt><dd>${fmt(r.en)}${days <= 60 ? ` <span class="exp">· ends in ${days} days</span>` : ""}</dd></dl><div class="note">This room is locked because it has a paid booking. To change a booking, contact StayHub support.</div>`;
+				} else if (conf) {
+					const to = r.s == "a" ? "unavailable" : "available";
+					body = `<div class="confirm"><p><b>Mark ${r.name} as ${to}?</b><br>${to == "unavailable" ? "Students won't be able to book it until you switch it back." : "Students will be able to book it again."}</p><div class="row"><button class="btn" id="ok">Yes, mark ${to}</button><button class="btn g" id="no">Cancel</button></div></div>`;
 				} else
-					nx.onclick = () => {
-						read();
-						if (!valid()) return;
-						step++;
+					body = `<div class="note">${r.s == "a" ? "This room is open for booking. Switch it off if it can't be rented, for example during repairs." : "This room is switched off and hidden from booking."}</div><div style="margin-top:16px"><button class="btn ${r.s == "a" ? "g" : ""}" id="tg">${r.s == "a" ? "Mark as unavailable" : "Mark as available"}</button></div>`;
+				$("#pn").innerHTML =
+					`<button class="btn g x" id="cl" aria-label="Close">×</button><span class="sl ${r.s}">${LBL[r.s]}</span><h2>${r.name}</h2><p style="color:var(--muted);margin:0">${r.type} · ${naira(r.price)} per year</p>${r.s == "b" ? "" : "<br>"}${body}`;
+				$("#cl").onclick = close;
+				const tg = $("#tg");
+				if (tg)
+					tg.onclick = () => {
+						conf = true;
+						panel();
+						$("#ok").focus();
+					};
+				const ok = $("#ok");
+				if (ok) {
+					ok.onclick = () => {
+						r.s = r.s == "a" ? "u" : "a";
+						toast(
+							`${r.name} marked ${LBL[r.s].toLowerCase()}. Change saved.`,
+						);
+						conf = false;
+						panel();
 						draw();
 					};
-			}
-			function goto(n) {
-				step = n;
-				draw();
-			}
-			function add() {
-				read();
-				d.rooms.push({
-					n: "Room " + (d.rooms.length + 1),
-					t: "Single room",
-					p: "",
-				});
-				draw();
-			}
-			function rm(i) {
-				read();
-				if (d.rooms.length > 1) {
-					d.rooms.splice(i, 1);
-					draw();
+					$("#no").onclick = () => {
+						conf = false;
+						panel();
+					};
 				}
 			}
-			$("#save").onclick = () => {
-				read();
-				const b = $("#save");
-				b.textContent = "Draft saved";
-				setTimeout(() => (b.textContent = "Save draft"), 1800);
+			function toast(m) {
+				const t = $("#tt");
+				t.textContent = m;
+				t.style.display = "block";
+				clearTimeout(t.h);
+				t.h = setTimeout(() => (t.style.display = "none"), 2600);
+			}
+			$("#bd").onclick = close;
+			document.addEventListener("keydown", (e) => {
+				if (e.key == "Escape" && sel !== null) close();
+			});
+			$("#ty").onchange = draw;
+			$("#prop").onchange = () => {
+				sel = null;
+				f = "all";
+				close();
+				ps = "l";
+				$("#ps").value = "l";
+				draw();
+				setTimeout(() => {
+					ps = "n";
+					$("#ps").value = "n";
+					draw();
+				}, 700);
 			};
+			$("#ps").onchange = (e) => {
+				ps = e.target.value;
+				draw();
+			};
+			ps = "l";
 			draw();
+			setTimeout(() => {
+				ps = "n";
+				draw();
+			}, 700);
 		</script>
 	</body>
 </html>
