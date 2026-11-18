@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
-		<title>StayHub – Rooms</title>
+		<title>StayHub – My properties</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap"
 			rel="stylesheet"
@@ -582,69 +582,43 @@
 				}
 			}
 
-			.stats {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 14px;
-				margin-bottom: 22px;
+			.tabs {
+				display: flex;
+				gap: 8px;
+				flex-wrap: wrap;
+				margin-bottom: 16px;
 			}
-			.stat {
-				background: var(--card);
+			.tab {
+				font: 500 14px var(--b);
+				padding: 8px 14px;
+				border-radius: 999px;
 				border: 1px solid var(--line);
-				border-radius: 16px;
-				padding: 16px 18px;
-				text-align: left;
-				font: inherit;
-				color: inherit;
+				background: var(--card);
+				color: var(--text);
 				cursor: pointer;
 			}
-			.stat:hover {
+			.tab:hover {
 				border-color: var(--text);
 			}
-			.stat[aria-pressed="true"] {
+			.tab[aria-pressed="true"] {
+				background: var(--soft);
 				border-color: var(--green);
-				box-shadow: 0 0 0 1px var(--green);
+				font-weight: 600;
 			}
-			.stat b {
-				display: block;
-				font: 600 30px var(--h);
-				line-height: 1.1;
-			}
-			.stat span {
+			.tab em {
+				font-style: normal;
 				color: var(--muted);
-				font-size: 14px;
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-			.dot {
-				width: 10px;
-				height: 10px;
-				border-radius: 3px;
-				display: inline-block;
-			}
-			.d-a {
-				background: var(--ok);
-			}
-			.d-b {
-				background: var(--bad);
-			}
-			.d-u {
-				background: var(--off);
-			}
-			.d-t {
-				background: var(--text);
+				margin-left: 6px;
 			}
 			.tools {
 				display: flex;
 				gap: 12px;
 				align-items: center;
 				flex-wrap: wrap;
-				margin-bottom: 18px;
+				margin-bottom: 16px;
 			}
-			.tools select {
-				width: auto;
-				min-width: 160px;
+			.tools input {
+				max-width: 300px;
 			}
 			.tools .prev {
 				margin-left: auto;
@@ -654,95 +628,110 @@
 				font-size: 13px;
 				color: var(--muted);
 			}
-			.rgrid {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 14px;
+			.tools .prev select {
+				width: auto;
 			}
-			.tile {
+			.pc {
 				background: var(--card);
 				border: 1px solid var(--line);
-				border-left: 6px solid var(--off);
+				border-radius: 16px;
+				padding: 18px;
+				display: grid;
+				grid-template-columns: 132px 1fr auto;
+				gap: 20px;
+				align-items: center;
+			}
+			.pc + .pc {
+				margin-top: 14px;
+			}
+			.pt {
+				aspect-ratio: 4/3;
 				border-radius: 12px;
-				padding: 14px 16px;
-				text-align: left;
-				font: inherit;
-				color: inherit;
-				cursor: pointer;
+				background: var(--soft);
+				border: 1px solid var(--line);
+				display: grid;
+				place-items: center;
+				color: var(--muted);
+				font-size: 12px;
+			}
+			.pc h3 {
+				font-size: 21px;
+			}
+			.pc .m {
+				color: var(--muted);
+				font-size: 14px;
+				margin: 3px 0 10px;
+			}
+			.pc .facts {
+				display: flex;
+				gap: 18px;
+				flex-wrap: wrap;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			.pc .facts span {
+				color: var(--muted);
+			}
+			.pc .facts b {
+				color: var(--text);
+				font-weight: 600;
+			}
+			.acts {
 				display: flex;
 				flex-direction: column;
-				gap: 4px;
+				gap: 8px;
+				min-width: 170px;
 			}
-			.tile:hover {
-				border-color: var(--text);
-				border-left-color: inherit;
+			.acts .btn {
+				text-align: center;
 			}
-			.tile.a {
-				border-left-color: var(--ok);
+			.cl {
+				grid-column: 1/-1;
+				border-radius: 12px;
+				padding: 14px 16px;
+				background: var(--soft);
+				font-size: 14px;
+				border-left: 5px solid var(--wait);
 			}
-			.tile.b {
+			.cl.r {
 				border-left-color: var(--bad);
 			}
-			.tile.u {
-				border-left-color: var(--off);
+			.cl b {
+				display: block;
+				margin-bottom: 2px;
 			}
-			.tile.sel {
-				outline: 3px solid var(--green);
-				outline-offset: 2px;
+			.b-chg {
+				color: var(--wait);
 			}
-			.tile .n {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				font: 600 18px var(--h);
+			.b-chg:before {
+				border-radius: 50% !important;
 			}
-			.tile .m {
-				color: var(--muted);
-				font-size: 13px;
-			}
-			.tile .pr {
-				font-weight: 600;
-				margin-top: 4px;
-			}
-			.sl {
-				display: inline-flex;
-				align-items: center;
-				gap: 7px;
-				font: 600 13px var(--b);
-			}
-			.sl:before {
-				content: "";
-				width: 9px;
-				height: 9px;
-				border-radius: 3px;
-				background: currentColor;
-			}
-			.sl.a {
-				color: var(--ok);
-			}
-			.sl.b {
+			.b-bad {
 				color: var(--bad);
 			}
-			.sl.u {
-				color: var(--off);
-			}
-			.sl.b:before {
-				border-radius: 50%;
-			}
-			.sl.u:before {
-				border-radius: 0;
+			.b-bad:before {
 				transform: rotate(45deg);
 			}
-			.tile svg {
-				width: 16px;
-				height: 16px;
-				stroke: var(--muted);
-				fill: none;
-				stroke-width: 2;
+			.b-wait:before {
+				border-radius: 0 !important;
+				clip-path: polygon(50% 0, 100% 100%, 0 100%);
+			}
+			.prog {
+				height: 6px;
+				border-radius: 6px;
+				background: var(--line);
+				max-width: 220px;
+				margin-top: 6px;
+				overflow: hidden;
+			}
+			.prog i {
+				display: block;
+				height: 100%;
+				background: var(--green);
 			}
 			.sk {
-				height: 104px;
-				border-radius: 12px;
+				height: 130px;
+				border-radius: 16px;
 				background: linear-gradient(
 					90deg,
 					var(--line),
@@ -751,6 +740,9 @@
 				);
 				background-size: 200% 100%;
 				animation: sh 1.2s infinite;
+			}
+			.sk + .sk {
+				margin-top: 14px;
 			}
 			@keyframes sh {
 				to {
@@ -765,7 +757,7 @@
 			.msg {
 				border: 1px dashed var(--line);
 				border-radius: 16px;
-				padding: 44px 20px;
+				padding: 48px 20px;
 				text-align: center;
 				background: var(--card);
 			}
@@ -779,78 +771,6 @@
 			}
 			.msg.e {
 				border: 1px solid var(--bad);
-				border-style: solid;
-			}
-			.key {
-				display: flex;
-				gap: 20px;
-				flex-wrap: wrap;
-				margin-top: 22px;
-				font-size: 13px;
-				color: var(--muted);
-			}
-			.bd {
-				position: fixed;
-				inset: 0;
-				background: rgba(10, 15, 9, 0.45);
-				display: none;
-				z-index: 20;
-			}
-			.bd.on {
-				display: block;
-			}
-			.pn {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				width: 400px;
-				max-width: 100%;
-				background: var(--card);
-				border-left: 1px solid var(--line);
-				z-index: 21;
-				padding: 24px;
-				overflow: auto;
-				transform: translateX(100%);
-				visibility: hidden;
-				transition: transform 0.2s;
-			}
-			.pn.on {
-				transform: none;
-				visibility: visible;
-			}
-			@media (prefers-reduced-motion: reduce) {
-				.pn {
-					transition: none;
-				}
-			}
-			.pn .x {
-				float: right;
-			}
-			.pn h2 {
-				font-size: 26px;
-				margin: 4px 0 10px;
-			}
-			.pn .sum {
-				grid-template-columns: 130px 1fr;
-				margin: 18px 0;
-			}
-			.confirm {
-				background: var(--soft);
-				border-radius: 12px;
-				padding: 14px 16px;
-				margin-top: 14px;
-			}
-			.confirm p {
-				margin: 0 0 12px;
-			}
-			.confirm .row {
-				display: flex;
-				gap: 10px;
-			}
-			.exp {
-				color: var(--wait);
-				font-weight: 600;
 			}
 			.toast {
 				position: fixed;
@@ -865,17 +785,17 @@
 				display: none;
 				max-width: 90%;
 			}
-			@media (max-width: 1000px) {
-				.rgrid {
-					grid-template-columns: repeat(3, 1fr);
+			@media (max-width: 760px) {
+				.pc {
+					grid-template-columns: 1fr;
 				}
-			}
-			@media (max-width: 700px) {
-				.rgrid {
-					grid-template-columns: 1fr 1fr;
+				.pt {
+					aspect-ratio: 16/7;
 				}
-				.stats {
-					grid-template-columns: 1fr 1fr;
+				.acts {
+					flex-direction: row;
+					flex-wrap: wrap;
+					min-width: 0;
 				}
 				.tools .prev {
 					margin-left: 0;
@@ -903,12 +823,12 @@
 						<rect x="3" y="16" width="7" height="5" rx="2" /></svg
 					>Overview</a
 				>
-				<a href="#"
+				<a href="#" aria-current="page"
 					><svg viewBox="0 0 24 24">
 						<path d="M4 11l8-7 8 7v9H4z" /></svg
 					>My properties</a
 				>
-				<a href="#" aria-current="page"
+				<a href="#"
 					><svg viewBox="0 0 24 24">
 						<rect x="4" y="4" width="7" height="7" rx="2" />
 						<rect x="13" y="4" width="7" height="7" rx="2" />
@@ -947,20 +867,29 @@
 			<div>
 				<div class="top">
 					<span class="crumb"
-						><b style="color: var(--text)">Rooms</b></span
-					><span class="sp"></span
-					><span class="badge b-ok"><span>Approved</span></span>
+						><b style="color: var(--text)">My properties</b></span
+					>
 				</div>
 				<main>
 					<div class="head">
 						<div>
-							<h1>Rooms</h1>
-							<p>
-								See which rooms are free, booked or switched
-								off.
-							</p>
+							<h1>My properties</h1>
+							<p>Track each listing, from draft to live.</p>
 						</div>
+						<button
+							class="btn"
+							type="button"
+							onclick="toast('Opens the Add property flow')"
+						>
+							+ Add property
+						</button>
 					</div>
+					<div
+						class="tabs"
+						id="tabs"
+						role="group"
+						aria-label="Filter by status"
+					></div>
 					<div class="tools">
 						<label
 							class="f"
@@ -968,26 +897,18 @@
 								flex-direction: row;
 								align-items: center;
 								gap: 10px;
+								flex: 1;
+								max-width: 340px;
 							"
-							>Property<select id="prop">
-								<option>The Haven Studios</option>
-								<option>Palm Court Living</option>
-							</select></label
-						>
-						<label
-							class="f"
-							style="
-								flex-direction: row;
-								align-items: center;
-								gap: 10px;
-							"
-							>Room type<select id="ty">
-								<option value="">All types</option>
-								<option>Single room</option>
-								<option>Studio</option>
-								<option>Shared room</option>
-							</select></label
-						>
+							><span
+								class="sr"
+								style="position: absolute; left: -9999px"
+								>Search properties</span
+							><input
+								type="text"
+								id="q"
+								placeholder="Search by name or area"
+						/></label>
 						<div class="prev">
 							<label for="ps">Preview state (design only)</label
 							><select id="ps">
@@ -998,128 +919,126 @@
 							</select>
 						</div>
 					</div>
-					<div class="stats" id="stats"></div>
 					<div id="g" aria-live="polite"></div>
-					<div class="key">
-						<span class="sl a">Available: can be booked</span
-						><span class="sl b">Booked: paid, locked</span
-						><span class="sl u"
-							>Unavailable: switched off by you</span
-						>
-					</div>
 					<p class="tag">
-						Sample data shown for design purposes only. A room
-						becomes Booked only after StayHub verifies the tenant's
-						payment.
+						Sample data shown for design purposes only. Only
+						Approved properties appear in public search. Changes to
+						an approved listing are reviewed before they go live.
 					</p>
 				</main>
 			</div>
 		</div>
-		<div class="bd" id="bd"></div>
-		<aside
-			class="pn"
-			id="pn"
-			role="dialog"
-			aria-modal="true"
-			aria-label="Room details"
-		></aside>
 		<div class="toast" id="tt" role="status"></div>
 		<script>
-			const NAMES = [
-				"Amaka O.",
-				"Tunde A.",
-				"Ngozi E.",
-				"Ibrahim S.",
-				"Chidera N.",
-				"Bola K.",
-				"Funke A.",
-			];
-			const naira = (n) => "₦" + Number(n).toLocaleString("en-NG"),
-				TODAY = new Date("2026-11-18");
-			const fmt = (s) =>
-				new Date(s).toLocaleDateString("en-GB", {
-					day: "numeric",
-					month: "short",
-					year: "numeric",
-				});
-			const LBL = { a: "Available", b: "Booked", u: "Unavailable" };
-			function gen(n, off) {
-				const st = [
-					"b",
-					"a",
-					"a",
-					"b",
-					"u",
-					"a",
-					"b",
-					"b",
-					"a",
-					"a",
-					"b",
-					"a",
-					"u",
-					"b",
-					"a",
-					"a",
-				];
-				return Array.from({ length: n }, (_, i) => {
-					const s = st[(i + off) % 16],
-						t =
-							i < n * 0.6
-								? "Single room"
-								: i < n * 0.85
-									? "Studio"
-									: "Shared room",
-						p =
-							t == "Single room"
-								? 450000
-								: t == "Studio"
-									? 600000
-									: 300000;
-					const r = {
-						id: i,
-						name: "Room " + (i + 1),
-						type: t,
-						price: p,
-						s,
-					};
-					if (s == "b") {
-						r.tn = NAMES[i % 7];
-						r.ref = "SH-" + (24100 + i * 7);
-						r.st = "2026-09-01";
-						r.en = i == 3 ? "2026-12-15" : "2027-08-31";
-					}
-					return r;
-				});
-			}
-			let data = {
-					"The Haven Studios": gen(16, 0),
-					"Palm Court Living": gen(8, 3),
+			const P = [
+				{
+					n: "The Haven Studios",
+					a: "Akoka, near University A",
+					s: "ok",
+					r: 16,
+					av: 7,
+					p: 450000,
+					u: "12 Nov 2026",
 				},
-				f = "all",
-				sel = null,
-				ps = "n",
-				conf = false;
+				{
+					n: "Palm Court Living",
+					a: "Yaba, near University B",
+					s: "ok",
+					r: 8,
+					av: 3,
+					p: 380000,
+					u: "2 Nov 2026",
+				},
+				{
+					n: "Green Gate Lodge",
+					a: "Akoka, near University A",
+					s: "wait",
+					r: 12,
+					av: 12,
+					p: 420000,
+					u: "16 Nov 2026",
+					sub: "16 Nov 2026",
+				},
+				{
+					n: "Unity Hall",
+					a: "Yaba, near University B",
+					s: "chg",
+					r: 10,
+					av: 10,
+					p: 350000,
+					u: "14 Nov 2026",
+					why: "The photos don't show the actual rooms. Please upload photos of each room type and add the full street address.",
+					on: "15 Nov 2026",
+				},
+				{
+					n: "Campus Edge Rooms",
+					a: "Not added yet",
+					s: "draft",
+					r: 0,
+					av: 0,
+					p: 0,
+					u: "9 Nov 2026",
+					step: 2,
+				},
+				{
+					n: "Old Mill Court",
+					a: "Surulere",
+					s: "bad",
+					r: 6,
+					av: 6,
+					p: 300000,
+					u: "28 Oct 2026",
+					why: "We couldn't confirm that this property exists at the address given. Contact support if you think this is a mistake.",
+					on: "30 Oct 2026",
+				},
+			];
+			const L = {
+				ok: ["Approved", "b-ok"],
+				wait: ["Pending review", "b-wait"],
+				chg: ["Changes required", "b-chg"],
+				draft: ["Draft", "b-draft"],
+				bad: ["Rejected", "b-bad"],
+			};
+			const TABS = [
+				["all", "All"],
+				["ok", "Approved"],
+				["wait", "Pending review"],
+				["chg", "Changes required"],
+				["draft", "Draft"],
+				["bad", "Rejected"],
+			];
 			const $ = (s) => document.querySelector(s),
-				cur = () => data[$("#prop").value];
-			const ic =
-				'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
+				naira = (n) => "₦" + Number(n).toLocaleString("en-NG");
+			let f = "all",
+				ps = "n";
+			function acts(p) {
+				return {
+					ok: '<button class="btn g" type="button">Manage rooms</button><button class="btn t" type="button">View public listing</button>',
+					wait: '<button class="btn g" type="button">View submission</button>',
+					chg: '<button class="btn" type="button">Edit and resubmit</button>',
+					draft: '<button class="btn" type="button">Continue editing</button><button class="btn t" type="button">Delete draft</button>',
+					bad: '<button class="btn g" type="button">Contact support</button>',
+				}[p.s];
+			}
+			function info(p) {
+				if (p.s == "draft")
+					return `<div class="m">${p.a}</div><span class="prog" style="display:block"><i style="width:${p.step * 25}%"></i></span><div class="m" style="margin:6px 0 0">Step ${p.step} of 4 complete</div>`;
+				return `<div class="m">${p.a}</div><div class="facts"><div><span>Rooms</span><br><b>${p.r}</b></div><div><span>${p.s == "ok" ? "Available" : "Rooms ready"}</span><br><b>${p.av}</b></div><div><span>From</span><br><b>${naira(p.p)} / year</b></div><div><span>${p.s == "wait" ? "Submitted" : "Updated"}</span><br><b>${p.sub || p.u}</b></div></div>`;
+			}
+			function card(p) {
+				const [l, c] = L[p.s];
+				return `<article class="pc"><div class="pt" role="img" aria-label="Cover photo placeholder">Cover photo</div><div><h3>${p.n}</h3><span class="badge ${c}" style="margin:6px 0 4px"><span>${l}</span></span>${info(p)}</div><div class="acts">${acts(p)}</div>
+${p.s == "chg" || p.s == "bad" ? `<div class="cl ${p.s == "bad" ? "r" : ""}"><b>${p.s == "bad" ? "Reason for rejection" : "What to fix"} · StayHub review team, ${p.on}</b>${p.why}</div>` : ""}
+${p.s == "wait" ? `<div class="cl" style="border-left-color:var(--wait)"><b>Under review</b>We'll email you when it's approved or if we need changes. It won't appear in search until then.</div>` : ""}</article>`;
+			}
 			function draw() {
-				const all = cur(),
-					c = { all: all.length, a: 0, b: 0, u: 0 };
-				all.forEach((r) => c[r.s]++);
-				$("#stats").innerHTML = [
-					["all", "Total rooms", "t"],
-					["a", "Available", "a"],
-					["b", "Booked", "b"],
-					["u", "Unavailable", "u"],
-				]
-					.map(
-						([k, l, d]) =>
-							`<button class="stat" data-f="${k}" aria-pressed="${f == k}"><span><i class="dot d-${d}"></i>${l}</span><b>${ps == "n" ? c[k] : "–"}</b></button>`,
-					)
-					.join("");
-				document.querySelectorAll(".stat").forEach(
+				const c = { all: P.length };
+				P.forEach((p) => (c[p.s] = (c[p.s] || 0) + 1));
+				$("#tabs").innerHTML = TABS.map(
+					([k, t]) =>
+						`<button class="tab" data-f="${k}" aria-pressed="${f == k}">${t}<em>${ps == "n" ? c[k] || 0 : "–"}</em></button>`,
+				).join("");
+				document.querySelectorAll(".tab").forEach(
 					(b) =>
 						(b.onclick = () => {
 							f = b.dataset.f;
@@ -1127,132 +1046,41 @@
 						}),
 				);
 				const g = $("#g"),
-					ty = $("#ty").value;
+					q = $("#q").value.trim().toLowerCase();
 				if (ps == "l") {
 					g.innerHTML =
-						'<div class="rgrid">' +
-						'<div class="sk"></div>'.repeat(8) +
-						"</div>";
+						'<div class="sk"></div><div class="sk"></div><div class="sk"></div>';
 					return;
 				}
 				if (ps == "x") {
 					g.innerHTML =
-						"<div class=\"msg e\" role=\"alert\"><h3>We couldn't load your rooms</h3><p>Check your connection and try again. Your room data hasn't changed.</p><button class=\"btn\" onclick=\"$('#ps').value='n';ps='n';draw()\">Try again</button></div>";
+						'<div class="msg e" role="alert"><h3>We couldn\'t load your properties</h3><p>Check your connection and try again. Nothing has been lost.</p><button class="btn" onclick="ps=\'n\';$(\'#ps\').value=\'n\';draw()">Try again</button></div>';
 					return;
 				}
-				let list =
+				const list =
 					ps == "e"
 						? []
-						: all.filter(
-								(r) =>
-									(f == "all" || r.s == f) &&
-									(!ty || r.type == ty),
+						: P.filter(
+								(p) =>
+									(f == "all" || p.s == f) &&
+									(!q ||
+										(p.n + p.a).toLowerCase().includes(q)),
 							);
 				if (!list.length) {
-					g.innerHTML = `<div class="msg"><h3>${ps == "e" ? "No rooms added yet" : "No rooms match this filter"}</h3><p>${ps == "e" ? "Add rooms to your property so students can book them." : "Try a different status or room type."}</p><button class="btn g" onclick="rs()">${ps == "e" ? "Add rooms" : "Clear filters"}</button></div>`;
+					const e = ps == "e";
+					g.innerHTML = `<div class="msg"><h3>${e ? "You haven't added a property yet" : "No properties match"}</h3><p>${e ? "Add your first property. It goes live once the StayHub team approves it." : "Try another status or a different search."}</p><button class="btn ${e ? "" : "g"}" onclick="${e ? "toast('Opens the Add property flow')" : "f='all';$('#q').value='';draw()"}">${e ? "+ Add property" : "Clear filters"}</button></div>`;
 					return;
 				}
-				g.innerHTML =
-					'<div class="rgrid">' +
-					list
-						.map(
-							(r) =>
-								`<button class="tile ${r.s}${sel == r.id ? " sel" : ""}" data-i="${r.id}" aria-label="${r.name}, ${r.type}, ${LBL[r.s]}"><div class="n">${r.name}${r.s == "b" ? ic : ""}</div><span class="sl ${r.s}">${LBL[r.s]}</span><span class="m">${r.type}</span><span class="pr">${naira(r.price)} <span class="m" style="font-weight:400">/ year</span></span></button>`,
-						)
-						.join("") +
-					"</div>";
-				document
-					.querySelectorAll(".tile")
-					.forEach((t) => (t.onclick = () => open(+t.dataset.i)));
-			}
-			function rs() {
-				f = "all";
-				$("#ty").value = "";
-				if (ps == "e") {
-					ps = "n";
-					$("#ps").value = "n";
-				}
-				draw();
-			}
-			function open(i) {
-				sel = i;
-				conf = false;
-				panel();
-				$("#pn").classList.add("on");
-				$("#bd").classList.add("on");
-				draw();
-				$("#cl").focus();
-			}
-			function close() {
-				sel = null;
-				$("#pn").classList.remove("on");
-				$("#bd").classList.remove("on");
-				draw();
-			}
-			function panel() {
-				const r = cur().find((x) => x.id == sel);
-				if (!r) return;
-				let body = "";
-				if (r.s == "b") {
-					const days = Math.round((new Date(r.en) - TODAY) / 864e5);
-					body = `<dl class="sum"><dt>Tenant</dt><dd>${r.tn}</dd><dt>Booking ref</dt><dd>${r.ref}</dd><dt>Payment</dt><dd>Paid and verified</dd><dt>Tenancy starts</dt><dd>${fmt(r.st)}</dd><dt>Tenancy ends</dt><dd>${fmt(r.en)}${days <= 60 ? ` <span class="exp">· ends in ${days} days</span>` : ""}</dd></dl><div class="note">This room is locked because it has a paid booking. To change a booking, contact StayHub support.</div>`;
-				} else if (conf) {
-					const to = r.s == "a" ? "unavailable" : "available";
-					body = `<div class="confirm"><p><b>Mark ${r.name} as ${to}?</b><br>${to == "unavailable" ? "Students won't be able to book it until you switch it back." : "Students will be able to book it again."}</p><div class="row"><button class="btn" id="ok">Yes, mark ${to}</button><button class="btn g" id="no">Cancel</button></div></div>`;
-				} else
-					body = `<div class="note">${r.s == "a" ? "This room is open for booking. Switch it off if it can't be rented, for example during repairs." : "This room is switched off and hidden from booking."}</div><div style="margin-top:16px"><button class="btn ${r.s == "a" ? "g" : ""}" id="tg">${r.s == "a" ? "Mark as unavailable" : "Mark as available"}</button></div>`;
-				$("#pn").innerHTML =
-					`<button class="btn g x" id="cl" aria-label="Close">×</button><span class="sl ${r.s}">${LBL[r.s]}</span><h2>${r.name}</h2><p style="color:var(--muted);margin:0">${r.type} · ${naira(r.price)} per year</p>${r.s == "b" ? "" : "<br>"}${body}`;
-				$("#cl").onclick = close;
-				const tg = $("#tg");
-				if (tg)
-					tg.onclick = () => {
-						conf = true;
-						panel();
-						$("#ok").focus();
-					};
-				const ok = $("#ok");
-				if (ok) {
-					ok.onclick = () => {
-						r.s = r.s == "a" ? "u" : "a";
-						toast(
-							`${r.name} marked ${LBL[r.s].toLowerCase()}. Change saved.`,
-						);
-						conf = false;
-						panel();
-						draw();
-					};
-					$("#no").onclick = () => {
-						conf = false;
-						panel();
-					};
-				}
+				g.innerHTML = list.map(card).join("");
 			}
 			function toast(m) {
 				const t = $("#tt");
 				t.textContent = m;
 				t.style.display = "block";
 				clearTimeout(t.h);
-				t.h = setTimeout(() => (t.style.display = "none"), 2600);
+				t.h = setTimeout(() => (t.style.display = "none"), 2200);
 			}
-			$("#bd").onclick = close;
-			document.addEventListener("keydown", (e) => {
-				if (e.key == "Escape" && sel !== null) close();
-			});
-			$("#ty").onchange = draw;
-			$("#prop").onchange = () => {
-				sel = null;
-				f = "all";
-				close();
-				ps = "l";
-				$("#ps").value = "l";
-				draw();
-				setTimeout(() => {
-					ps = "n";
-					$("#ps").value = "n";
-					draw();
-				}, 700);
-			};
+			$("#q").oninput = draw;
 			$("#ps").onchange = (e) => {
 				ps = e.target.value;
 				draw();
