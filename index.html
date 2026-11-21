@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
-		<title>StayHub – Bookings</title>
+		<title>StayHub – Booking detail</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap"
 			rel="stylesheet"
@@ -583,107 +583,40 @@
 			}
 
 			main {
-				max-width: 1180px !important;
+				max-width: 1120px !important;
 			}
-			.tools {
-				display: flex;
-				gap: 10px;
-				align-items: center;
-				flex-wrap: wrap;
-				margin-bottom: 16px;
-			}
-			.tools input {
-				width: 260px;
-			}
-			.tools select {
-				width: auto;
-				min-width: 150px;
-			}
-			.tools .prev {
-				margin-left: auto;
-				display: flex;
-				gap: 8px;
-				align-items: center;
-				font-size: 13px;
-				color: var(--muted);
-			}
-			.tw {
-				background: var(--card);
-				border: 1px solid var(--line);
-				border-radius: 16px;
-				overflow: auto;
-				max-height: 640px;
-			}
-			table.bk {
-				width: 100%;
-				border-collapse: collapse;
-				min-width: 900px;
-			}
-			.bk th {
-				position: sticky;
-				top: 0;
-				background: var(--card);
-				text-align: left;
-				font: 600 13px var(--b);
-				color: var(--muted);
-				padding: 14px 16px;
-				border-bottom: 1px solid var(--line);
-				white-space: nowrap;
-				z-index: 1;
-			}
-			.bk th button {
-				all: unset;
-				cursor: pointer;
+			.back {
 				display: inline-flex;
 				gap: 6px;
-				align-items: center;
+				color: var(--muted);
+				text-decoration: none;
+				font-weight: 500;
+				margin-bottom: 14px;
 			}
-			.bk th button:hover {
+			.back:hover {
 				color: var(--text);
 			}
-			.bk th button:focus-visible {
-				outline: 3px solid var(--green);
-				outline-offset: 2px;
+			.bd2 {
+				display: grid;
+				grid-template-columns: 1fr 340px;
+				gap: 20px;
+				align-items: start;
 			}
-			.bk td {
-				padding: 14px 16px;
-				border-bottom: 1px solid var(--line);
-				vertical-align: middle;
-				font-size: 14px;
+			.stack > .card + .card {
+				margin-top: 20px;
 			}
-			.bk tr:last-child td {
-				border-bottom: 0;
+			.card h2 {
+				font-size: 20px;
+				margin-bottom: 16px;
 			}
-			.bk tbody tr {
-				cursor: pointer;
+			.sum {
+				grid-template-columns: 160px 1fr !important;
 			}
-			.bk tbody tr:hover td {
-				background: var(--soft);
-			}
-			.bk .t b {
-				display: block;
-				font-weight: 600;
-			}
-			.bk .t span,
-			.bk .sm {
-				color: var(--muted);
-				font-size: 13px;
-			}
-			.bk .ref {
-				font-weight: 600;
-				font-variant-numeric: tabular-nums;
-			}
-			.bk .pr {
-				font-weight: 600;
-				white-space: nowrap;
-			}
-			.bk .soon {
-				color: var(--wait);
-				font-weight: 600;
-				font-size: 13px;
-			}
-			.badge {
-				white-space: nowrap;
+			.badges {
+				display: flex;
+				gap: 10px;
+				flex-wrap: wrap;
+				margin-top: 10px;
 			}
 			.b-wait:before {
 				border-radius: 0 !important;
@@ -695,27 +628,98 @@
 			.b-bad:before {
 				transform: rotate(45deg);
 			}
-			.pg {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-top: 14px;
+			.ban {
+				border-radius: 12px;
+				padding: 14px 16px;
+				margin-bottom: 20px;
+				background: var(--soft);
+				border-left: 5px solid var(--wait);
 				font-size: 14px;
+			}
+			.ban.r {
+				border-left-color: var(--bad);
+			}
+			.ban b {
+				display: block;
+			}
+			.big {
+				font: 600 34px var(--h);
+				letter-spacing: -0.02em;
+			}
+			.big small {
+				font: 400 14px var(--b);
 				color: var(--muted);
-				flex-wrap: wrap;
-				gap: 10px;
+				letter-spacing: 0;
 			}
-			.pg div {
-				display: flex;
-				gap: 8px;
+			.side {
+				position: sticky;
+				top: 90px;
 			}
-			.pg .btn[disabled] {
-				opacity: 0.4;
-				cursor: default;
+			.side .btn {
+				width: 100%;
+				margin-top: 10px;
+			}
+			.tl {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.tl li {
+				position: relative;
+				padding: 0 0 20px 32px;
+				font-size: 14px;
+			}
+			.tl li:last-child {
+				padding-bottom: 0;
+			}
+			.tl li:before {
+				content: "";
+				position: absolute;
+				left: 8px;
+				top: 22px;
+				bottom: -2px;
+				width: 2px;
+				background: var(--line);
+			}
+			.tl li:last-child:before {
+				display: none;
+			}
+			.tl i {
+				position: absolute;
+				left: 0;
+				top: 1px;
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				border: 2px solid var(--line);
+				background: var(--card);
+				display: grid;
+				place-items: center;
+				font-style: normal;
+				font-size: 11px;
+				color: #fff;
+			}
+			.tl li.d i {
+				background: var(--green);
+				border-color: var(--green);
+			}
+			.tl li.x i {
+				background: var(--bad);
+				border-color: var(--bad);
+			}
+			.tl li.p i {
+				border-color: var(--wait);
+			}
+			.tl b {
+				display: block;
+				font-weight: 600;
+			}
+			.tl span {
+				color: var(--muted);
 			}
 			.sk {
-				height: 52px;
-				border-radius: 10px;
+				height: 120px;
+				border-radius: 16px;
 				background: linear-gradient(
 					90deg,
 					var(--line),
@@ -724,7 +728,9 @@
 				);
 				background-size: 200% 100%;
 				animation: sh 1.2s infinite;
-				margin: 12px 16px;
+			}
+			.sk + .sk {
+				margin-top: 20px;
 			}
 			@keyframes sh {
 				to {
@@ -737,8 +743,11 @@
 				}
 			}
 			.msg {
+				border: 1px solid var(--bad);
+				border-radius: 16px;
 				padding: 56px 20px;
 				text-align: center;
+				background: var(--card);
 			}
 			.msg h3 {
 				font-size: 22px;
@@ -748,8 +757,16 @@
 				color: var(--muted);
 				margin: 0 0 18px;
 			}
-			.msg.e h3 {
-				color: var(--bad);
+			.prev {
+				display: flex;
+				gap: 8px;
+				align-items: center;
+				font-size: 13px;
+				color: var(--muted);
+				margin-bottom: 16px;
+			}
+			.prev select {
+				width: auto;
 			}
 			.toast {
 				position: fixed;
@@ -762,55 +779,20 @@
 				border-radius: 10px;
 				z-index: 30;
 				display: none;
-				max-width: 90%;
 			}
-			@media (max-width: 860px) {
-				.tw {
-					border: 0;
-					background: none;
-					overflow: visible;
-					max-height: none;
+			@media (max-width: 900px) {
+				.bd2 {
+					grid-template-columns: 1fr;
 				}
-				table.bk,
-				.bk tbody,
-				.bk tr,
-				.bk td {
-					display: block;
-					min-width: 0;
+				.side {
+					position: static;
 				}
-				.bk thead {
-					display: none;
+				.sum {
+					grid-template-columns: 1fr !important;
+					gap: 2px 0 !important;
 				}
-				.bk tr {
-					background: var(--card);
-					border: 1px solid var(--line);
-					border-radius: 16px;
-					padding: 12px 16px;
-					margin-bottom: 12px;
-				}
-				.bk td {
-					border: 0;
-					padding: 7px 0;
-					display: flex;
-					justify-content: space-between;
-					gap: 16px;
-					text-align: right;
-				}
-				.bk td:before {
-					content: attr(data-l);
-					color: var(--muted);
-					font-size: 13px;
-					text-align: left;
-					flex: none;
-				}
-				.bk tbody tr:hover td {
-					background: none;
-				}
-				.tools input {
-					width: 100%;
-				}
-				.tools .prev {
-					margin-left: 0;
+				.sum dd {
+					margin-bottom: 10px !important;
 				}
 			}
 		</style>
@@ -879,62 +861,35 @@
 			<div>
 				<div class="top">
 					<span class="crumb"
-						><b style="color: var(--text)">Bookings</b></span
+						>Bookings /
+						<b style="color: var(--text)">SH-24121</b></span
 					>
 				</div>
 				<main>
-					<div class="head">
-						<div>
-							<h1>Bookings and tenants</h1>
-							<p>
-								Every annual booking across your properties,
-								with payment and tenancy status.
-							</p>
-						</div>
+					<a
+						class="back"
+						href="#"
+						onclick="
+							toast('Returns to Bookings');
+							return false;
+						"
+						>← Back to bookings</a
+					>
+					<div class="prev">
+						<label for="ps">Preview state (design only)</label
+						><select id="ps">
+							<option value="c">Confirmed</option>
+							<option value="s">Ending soon</option>
+							<option value="w">Awaiting payment</option>
+							<option value="f">Payment failed</option>
+							<option value="l">Loading</option>
+							<option value="x">Error</option>
+						</select>
 					</div>
-					<div class="tools">
-						<label
-							><span style="position: absolute; left: -9999px"
-								>Search bookings</span
-							><input
-								type="text"
-								id="q"
-								placeholder="Search tenant, reference or room"
-						/></label>
-						<select id="fp" aria-label="Property">
-							<option value="">All properties</option>
-							<option>The Haven Studios</option>
-							<option>Palm Court Living</option>
-						</select>
-						<select id="fy" aria-label="Payment status">
-							<option value="">All payments</option>
-							<option>Paid</option>
-							<option>Pending</option>
-							<option>Failed</option>
-						</select>
-						<select id="ft" aria-label="Tenancy">
-							<option value="">All tenancies</option>
-							<option value="active">Active</option>
-							<option value="soon">Ending in 60 days</option>
-							<option value="ended">Ended</option>
-						</select>
-						<div class="prev">
-							<label for="ps">Preview state (design only)</label
-							><select id="ps">
-								<option value="n">Normal</option>
-								<option value="l">Loading</option>
-								<option value="e">Empty</option>
-								<option value="x">Error</option>
-							</select>
-						</div>
-					</div>
-					<div class="tw" id="tw"></div>
-					<div class="pg" id="pg"></div>
+					<div id="v"></div>
 					<p class="tag">
 						Sample data shown for design purposes only. A booking is
 						confirmed only after StayHub verifies the payment.
-						Tenant details are limited to what you need to manage
-						the booking.
 					</p>
 				</main>
 			</div>
@@ -942,146 +897,116 @@
 		<div class="toast" id="tt" role="status"></div>
 		<script>
 			const $ = (s) => document.querySelector(s),
-				naira = (n) => "₦" + Number(n).toLocaleString("en-NG"),
-				TODAY = new Date("2026-11-18"),
-				PER = 10;
+				naira = (n) => "₦" + Number(n).toLocaleString("en-NG");
+			const B = (t, c) =>
+				`<span class="badge ${c}"><span>${t}</span></span>`;
+			const V = {
+				c: {
+					pay: ["Paid", "b-ok"],
+					bk: ["Confirmed", "b-ok"],
+					st: "2026-09-01",
+					en: "2027-08-31",
+					ten: "Active",
+					tl: [
+						["d", "Room selected", "1 Sep 2026, 10:12"],
+						["d", "Payment started", "1 Sep 2026, 10:14"],
+						["d", "Payment verified", "1 Sep 2026, 10:15"],
+						["d", "Booking confirmed", "1 Sep 2026, 10:15"],
+						[
+							"d",
+							"Confirmation emailed to tenant",
+							"1 Sep 2026, 10:16",
+						],
+					],
+				},
+				s: {
+					pay: ["Paid", "b-ok"],
+					bk: ["Confirmed", "b-ok"],
+					st: "2025-12-16",
+					en: "2026-12-15",
+					ten: "Ending soon",
+					ban: [
+						"",
+						"This tenancy ends in 27 days",
+						"The one-year term finishes on 15 Dec 2026.",
+					],
+					tl: [
+						["d", "Room selected", "16 Dec 2025, 14:02"],
+						["d", "Payment verified", "16 Dec 2025, 14:05"],
+						["d", "Booking confirmed", "16 Dec 2025, 14:05"],
+						["p", "Tenancy ends", "15 Dec 2026"],
+					],
+				},
+				w: {
+					pay: ["Pending", "b-wait"],
+					bk: ["Awaiting payment", "b-wait"],
+					ten: "Not started",
+					ban: [
+						"",
+						"This booking isn't confirmed yet",
+						"We haven't received a verified payment. The tenancy starts once payment is confirmed.",
+					],
+					tl: [
+						["d", "Room selected", "17 Nov 2026, 09:40"],
+						["p", "Payment started", "17 Nov 2026, 09:42"],
+						[
+							"",
+							"Booking confirmed",
+							"Waiting for verified payment",
+						],
+					],
+				},
+				f: {
+					pay: ["Failed", "b-bad"],
+					bk: ["Awaiting payment", "b-wait"],
+					ten: "Not started",
+					ban: [
+						"r",
+						"The payment didn't go through",
+						"The tenant can try again. The booking stays unconfirmed until payment is verified.",
+					],
+					tl: [
+						["d", "Room selected", "17 Nov 2026, 09:40"],
+						["x", "Payment failed", "17 Nov 2026, 09:44"],
+						[
+							"",
+							"Booking confirmed",
+							"Waiting for verified payment",
+						],
+					],
+				},
+			};
 			const fmt = (s) =>
 				new Date(s).toLocaleDateString("en-GB", {
 					day: "numeric",
 					month: "short",
 					year: "numeric",
 				});
-			const N = [
-				"Amaka Okafor",
-				"Tunde Adeyemi",
-				"Ngozi Eze",
-				"Ibrahim Sani",
-				"Chidera Nwosu",
-				"Bola Kehinde",
-				"Funke Alabi",
-				"Emeka Obi",
-				"Zainab Musa",
-				"Seun Ajayi",
-				"Kelechi Uche",
-				"Halima Bello",
-				"David Ojo",
-			];
-			const U = ["University A", "University B"],
-				PR = ["The Haven Studios", "Palm Court Living"];
-			const R = Array.from({ length: 27 }, (_, i) => {
-				const pay =
-						i % 9 == 4
-							? "Pending"
-							: i % 13 == 7
-								? "Failed"
-								: "Paid",
-					st =
-						i % 5 == 3
-							? "2026-01-15"
-							: i % 7 == 2
-								? "2025-12-15"
-								: "2026-09-01";
-				const en = new Date(st);
-				en.setFullYear(en.getFullYear() + 1);
-				en.setDate(en.getDate() - 1);
-				return {
-					ref: "SH-" + (24100 + i * 7),
-					n: N[i % 13],
-					u: U[i % 2],
-					p: PR[i % 2],
-					room: "Room " + ((i % 16) + 1),
-					st,
-					en: en.toISOString().slice(0, 10),
-					price: [450000, 600000, 300000, 380000][i % 4],
-					pay,
-					bk: pay == "Paid" ? "Confirmed" : "Awaiting payment",
-				};
-			});
-			function ten(r) {
-				if (r.pay != "Paid") return ["–", ""];
-				const d = Math.round((new Date(r.en) - TODAY) / 864e5);
-				return d < 0
-					? ["ended", ""]
-					: d <= 60
-						? ["soon", d]
-						: ["active", ""];
-			}
-			let sk = "",
-				dir = 1,
-				pg = 1,
-				ps = "n";
-			const cmp = {
-				n: (a, b) => a.n.localeCompare(b.n),
-				en: (a, b) => a.en.localeCompare(b.en),
-				price: (a, b) => a.price - b.price,
-			};
-			function badge(t, c) {
-				return `<span class="badge ${c}"><span>${t}</span></span>`;
-			}
-			function draw() {
-				const w = $("#tw"),
-					q = $("#q").value.trim().toLowerCase(),
-					fp = $("#fp").value,
-					fy = $("#fy").value,
-					ft = $("#ft").value;
-				if (ps == "l") {
-					w.innerHTML = '<div class="sk"></div>'.repeat(6);
-					$("#pg").innerHTML = "";
+			function draw(k) {
+				const v = $("#v");
+				if (k == "l") {
+					v.innerHTML =
+						'<div class="bd2"><div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div><div class="sk" style="height:260px"></div></div>';
 					return;
 				}
-				if (ps == "x") {
-					w.innerHTML =
-						"<div class=\"msg e\" role=\"alert\"><h3>We couldn't load your bookings</h3><p>Check your connection and try again. Your bookings haven't changed.</p><button class=\"btn\" onclick=\"ps='n';$('#ps').value='n';draw()\">Try again</button></div>";
-					$("#pg").innerHTML = "";
+				if (k == "x") {
+					v.innerHTML =
+						'<div class="msg" role="alert"><h3>We couldn\'t find this booking</h3><p>It may have been removed, or the link is wrong. Go back to your bookings and try again.</p><button class="btn" onclick="toast(\'Returns to Bookings\')">Back to bookings</button></div>';
 					return;
 				}
-				let L =
-					ps == "e"
-						? []
-						: R.filter(
-								(r) =>
-									(!q ||
-										(r.n + r.ref + r.room)
-											.toLowerCase()
-											.includes(q)) &&
-									(!fp || r.p == fp) &&
-									(!fy || r.pay == fy) &&
-									(!ft || ten(r)[0] == ft),
-							);
-				if (sk) L = [...L].sort((a, b) => dir * cmp[sk](a, b));
-				if (!L.length) {
-					const e = ps == "e";
-					w.innerHTML = `<div class="msg"><h3>${e ? "No bookings yet" : "No bookings match"}</h3><p>${e ? "Bookings appear here after a student pays for a room." : "Try a different search or clear a filter."}</p>${e ? "" : '<button class="btn g" onclick="clr()">Clear filters</button>'}</div>`;
-					$("#pg").innerHTML = "";
-					return;
-				}
-				const pages = Math.ceil(L.length / PER);
-				pg = Math.min(pg, pages);
-				const s = (pg - 1) * PER,
-					V = L.slice(s, s + PER);
-				const th = (k, t) =>
-					`<th scope="col" ${sk == k ? `aria-sort="${dir > 0 ? "ascending" : "descending"}"` : ""}><button onclick="srt('${k}')">${t}<span aria-hidden="true">${sk == k ? (dir > 0 ? "↑" : "↓") : "↕"}</span></button></th>`;
-				w.innerHTML = `<table class="bk"><thead><tr><th scope="col">Reference</th>${th("n", "Tenant")}<th scope="col">Room</th>${th("en", "Tenancy")}${th("price", "Price per year")}<th scope="col">Payment</th><th scope="col">Booking</th></tr></thead><tbody>${V.map(
-					(r) => {
-						const [t, d] = ten(r);
-						return `<tr tabindex="0" onclick="toast('Opens booking ${r.ref}')" onkeydown="if(event.key=='Enter')this.click()">
-<td data-l="Reference" class="ref">${r.ref}</td><td data-l="Tenant" class="t"><div><b>${r.n}</b><span>Student, ${r.u}</span></div></td><td data-l="Room"><div>${r.room}<br><span class="sm">${r.p}</span></div></td>
-<td data-l="Tenancy"><div>${r.pay == "Paid" ? `${fmt(r.st)} – ${fmt(r.en)}` : "Starts once paid"}${t == "soon" ? `<br><span class="soon">Ends in ${d} days</span>` : t == "ended" ? '<br><span class="sm">Ended</span>' : t == "active" ? '<br><span class="sm">Active</span>' : ""}</div></td>
-<td data-l="Price" class="pr">${naira(r.price)}</td><td data-l="Payment">${badge(r.pay == "Paid" ? "Paid" : r.pay, r.pay == "Paid" ? "b-ok" : r.pay == "Pending" ? "b-wait" : "b-bad")}</td><td data-l="Booking">${badge(r.bk, r.bk == "Confirmed" ? "b-ok" : "b-wait")}</td></tr>`;
-					},
-				).join("")}</tbody></table>`;
-				$("#pg").innerHTML =
-					`<span>Showing ${s + 1}–${s + V.length} of ${L.length} bookings</span><div><button class="btn g" ${pg == 1 ? "disabled" : ""} onclick="pg--;draw()">Previous</button><button class="btn g" ${pg == pages ? "disabled" : ""} onclick="pg++;draw()">Next</button></div>`;
-			}
-			function srt(k) {
-				dir = sk == k ? -dir : 1;
-				sk = k;
-				draw();
-			}
-			function clr() {
-				["q", "fp", "fy", "ft"].forEach((i) => ($("#" + i).value = ""));
-				pg = 1;
-				draw();
+				const d = V[k],
+					paid = d.pay[0] == "Paid";
+				v.innerHTML = `<div class="head"><div><h1>Booking SH-24121</h1><div class="badges">${B("Booking: " + d.bk[0], d.bk[1])}${B("Payment: " + d.pay[0], d.pay[1])}</div></div></div>
+<div class="bd2"><div class="stack">
+${d.ban ? `<div class="ban ${d.ban[0]}" style="margin:0"><b>${d.ban[1]}</b>${d.ban[2]}</div>` : ""}
+<div class="card"><h2>Tenant</h2><dl class="sum"><dt>Name</dt><dd>Amaka Okafor</dd><dt>University</dt><dd>University A</dd><dt>Email</dt><dd>amaka.o@example.com</dd></dl><div class="note">Shown so you can manage this tenancy. Please keep it private.</div></div>
+<div class="card"><h2>Room</h2><dl class="sum"><dt>Property</dt><dd>The Haven Studios</dd><dt>Room</dt><dd>Room 4 · Single room</dd><dt>Address</dt><dd>12 Example Street, Akoka</dd></dl></div>
+<div class="card"><h2>Tenancy</h2><dl class="sum"><dt>Term</dt><dd>1 year</dd><dt>Starts</dt><dd>${paid ? fmt(d.st) : "Once payment is verified"}</dd><dt>Ends</dt><dd>${paid ? fmt(d.en) : "–"}</dd><dt>Tenancy status</dt><dd>${d.ten}</dd></dl></div>
+<div class="card"><h2>Booking history</h2><ol class="tl">${d.tl.map(([c, t, s]) => `<li class="${c}"><i aria-hidden="true">${c == "d" ? "✓" : c == "x" ? "×" : ""}</i><b>${t}</b><span>${s}</span></li>`).join("")}</ol></div></div>
+<aside class="side card" aria-label="Payment summary"><h2>Payment</h2><div class="big">${naira(450000)} <small>/ year</small></div>
+<dl class="sum" style="grid-template-columns:110px 1fr!important;margin-top:16px"><dt>Currency</dt><dd>Naira (₦)</dd><dt>Status</dt><dd>${paid ? "Paid and verified" : d.pay[0]}</dd><dt>Reference</dt><dd>FLW-••••8421</dd>${paid ? "<dt>Verified</dt><dd>" + fmt(d.st) + "</dd>" : ""}</dl>
+${paid ? '<button class="btn g" onclick="toast(\'Downloads a booking summary\')">Download summary</button>' : ""}
+<div class="note">To change or cancel a booking, contact StayHub support.</div><button class="btn g" onclick="toast('Opens support')">Contact support</button></aside></div>`;
 			}
 			function toast(m) {
 				const t = $("#tt");
@@ -1090,26 +1015,9 @@
 				clearTimeout(t.h);
 				t.h = setTimeout(() => (t.style.display = "none"), 2000);
 			}
-			["q", "fp", "fy", "ft"].forEach((i) =>
-				$("#" + i).addEventListener(
-					i == "q" ? "input" : "change",
-					() => {
-						pg = 1;
-						draw();
-					},
-				),
-			);
-			$("#ps").onchange = (e) => {
-				ps = e.target.value;
-				pg = 1;
-				draw();
-			};
-			ps = "l";
-			draw();
-			setTimeout(() => {
-				ps = "n";
-				draw();
-			}, 700);
+			$("#ps").onchange = (e) => draw(e.target.value);
+			draw("l");
+			setTimeout(() => draw($("#ps").value), 600);
 		</script>
 	</body>
 </html>
