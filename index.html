@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
-		<title>StayHub – My properties</title>
+		<title>StayHub – Bookings</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap"
 			rel="stylesheet"
@@ -582,43 +582,22 @@
 				}
 			}
 
-			.tabs {
-				display: flex;
-				gap: 8px;
-				flex-wrap: wrap;
-				margin-bottom: 16px;
-			}
-			.tab {
-				font: 500 14px var(--b);
-				padding: 8px 14px;
-				border-radius: 999px;
-				border: 1px solid var(--line);
-				background: var(--card);
-				color: var(--text);
-				cursor: pointer;
-			}
-			.tab:hover {
-				border-color: var(--text);
-			}
-			.tab[aria-pressed="true"] {
-				background: var(--soft);
-				border-color: var(--green);
-				font-weight: 600;
-			}
-			.tab em {
-				font-style: normal;
-				color: var(--muted);
-				margin-left: 6px;
+			main {
+				max-width: 1180px !important;
 			}
 			.tools {
 				display: flex;
-				gap: 12px;
+				gap: 10px;
 				align-items: center;
 				flex-wrap: wrap;
 				margin-bottom: 16px;
 			}
 			.tools input {
-				max-width: 300px;
+				width: 260px;
+			}
+			.tools select {
+				width: auto;
+				min-width: 150px;
 			}
 			.tools .prev {
 				margin-left: auto;
@@ -628,83 +607,87 @@
 				font-size: 13px;
 				color: var(--muted);
 			}
-			.tools .prev select {
-				width: auto;
-			}
-			.pc {
+			.tw {
 				background: var(--card);
 				border: 1px solid var(--line);
 				border-radius: 16px;
-				padding: 18px;
-				display: grid;
-				grid-template-columns: 132px 1fr auto;
-				gap: 20px;
+				overflow: auto;
+				max-height: 640px;
+			}
+			table.bk {
+				width: 100%;
+				border-collapse: collapse;
+				min-width: 900px;
+			}
+			.bk th {
+				position: sticky;
+				top: 0;
+				background: var(--card);
+				text-align: left;
+				font: 600 13px var(--b);
+				color: var(--muted);
+				padding: 14px 16px;
+				border-bottom: 1px solid var(--line);
+				white-space: nowrap;
+				z-index: 1;
+			}
+			.bk th button {
+				all: unset;
+				cursor: pointer;
+				display: inline-flex;
+				gap: 6px;
 				align-items: center;
 			}
-			.pc + .pc {
-				margin-top: 14px;
-			}
-			.pt {
-				aspect-ratio: 4/3;
-				border-radius: 12px;
-				background: var(--soft);
-				border: 1px solid var(--line);
-				display: grid;
-				place-items: center;
-				color: var(--muted);
-				font-size: 12px;
-			}
-			.pc h3 {
-				font-size: 21px;
-			}
-			.pc .m {
-				color: var(--muted);
-				font-size: 14px;
-				margin: 3px 0 10px;
-			}
-			.pc .facts {
-				display: flex;
-				gap: 18px;
-				flex-wrap: wrap;
-				font-size: 14px;
-				margin-top: 10px;
-			}
-			.pc .facts span {
-				color: var(--muted);
-			}
-			.pc .facts b {
+			.bk th button:hover {
 				color: var(--text);
+			}
+			.bk th button:focus-visible {
+				outline: 3px solid var(--green);
+				outline-offset: 2px;
+			}
+			.bk td {
+				padding: 14px 16px;
+				border-bottom: 1px solid var(--line);
+				vertical-align: middle;
+				font-size: 14px;
+			}
+			.bk tr:last-child td {
+				border-bottom: 0;
+			}
+			.bk tbody tr {
+				cursor: pointer;
+			}
+			.bk tbody tr:hover td {
+				background: var(--soft);
+			}
+			.bk .t b {
+				display: block;
 				font-weight: 600;
 			}
-			.acts {
-				display: flex;
-				flex-direction: column;
-				gap: 8px;
-				min-width: 170px;
+			.bk .t span,
+			.bk .sm {
+				color: var(--muted);
+				font-size: 13px;
 			}
-			.acts .btn {
-				text-align: center;
+			.bk .ref {
+				font-weight: 600;
+				font-variant-numeric: tabular-nums;
 			}
-			.cl {
-				grid-column: 1/-1;
-				border-radius: 12px;
-				padding: 14px 16px;
-				background: var(--soft);
-				font-size: 14px;
-				border-left: 5px solid var(--wait);
+			.bk .pr {
+				font-weight: 600;
+				white-space: nowrap;
 			}
-			.cl.r {
-				border-left-color: var(--bad);
-			}
-			.cl b {
-				display: block;
-				margin-bottom: 2px;
-			}
-			.b-chg {
+			.bk .soon {
 				color: var(--wait);
+				font-weight: 600;
+				font-size: 13px;
 			}
-			.b-chg:before {
-				border-radius: 50% !important;
+			.badge {
+				white-space: nowrap;
+			}
+			.b-wait:before {
+				border-radius: 0 !important;
+				clip-path: polygon(50% 0, 100% 100%, 0 100%);
 			}
 			.b-bad {
 				color: var(--bad);
@@ -712,26 +695,27 @@
 			.b-bad:before {
 				transform: rotate(45deg);
 			}
-			.b-wait:before {
-				border-radius: 0 !important;
-				clip-path: polygon(50% 0, 100% 100%, 0 100%);
+			.pg {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 14px;
+				font-size: 14px;
+				color: var(--muted);
+				flex-wrap: wrap;
+				gap: 10px;
 			}
-			.prog {
-				height: 6px;
-				border-radius: 6px;
-				background: var(--line);
-				max-width: 220px;
-				margin-top: 6px;
-				overflow: hidden;
+			.pg div {
+				display: flex;
+				gap: 8px;
 			}
-			.prog i {
-				display: block;
-				height: 100%;
-				background: var(--green);
+			.pg .btn[disabled] {
+				opacity: 0.4;
+				cursor: default;
 			}
 			.sk {
-				height: 130px;
-				border-radius: 16px;
+				height: 52px;
+				border-radius: 10px;
 				background: linear-gradient(
 					90deg,
 					var(--line),
@@ -740,9 +724,7 @@
 				);
 				background-size: 200% 100%;
 				animation: sh 1.2s infinite;
-			}
-			.sk + .sk {
-				margin-top: 14px;
+				margin: 12px 16px;
 			}
 			@keyframes sh {
 				to {
@@ -755,11 +737,8 @@
 				}
 			}
 			.msg {
-				border: 1px dashed var(--line);
-				border-radius: 16px;
-				padding: 48px 20px;
+				padding: 56px 20px;
 				text-align: center;
-				background: var(--card);
 			}
 			.msg h3 {
 				font-size: 22px;
@@ -769,8 +748,8 @@
 				color: var(--muted);
 				margin: 0 0 18px;
 			}
-			.msg.e {
-				border: 1px solid var(--bad);
+			.msg.e h3 {
+				color: var(--bad);
 			}
 			.toast {
 				position: fixed;
@@ -785,17 +764,50 @@
 				display: none;
 				max-width: 90%;
 			}
-			@media (max-width: 760px) {
-				.pc {
-					grid-template-columns: 1fr;
+			@media (max-width: 860px) {
+				.tw {
+					border: 0;
+					background: none;
+					overflow: visible;
+					max-height: none;
 				}
-				.pt {
-					aspect-ratio: 16/7;
-				}
-				.acts {
-					flex-direction: row;
-					flex-wrap: wrap;
+				table.bk,
+				.bk tbody,
+				.bk tr,
+				.bk td {
+					display: block;
 					min-width: 0;
+				}
+				.bk thead {
+					display: none;
+				}
+				.bk tr {
+					background: var(--card);
+					border: 1px solid var(--line);
+					border-radius: 16px;
+					padding: 12px 16px;
+					margin-bottom: 12px;
+				}
+				.bk td {
+					border: 0;
+					padding: 7px 0;
+					display: flex;
+					justify-content: space-between;
+					gap: 16px;
+					text-align: right;
+				}
+				.bk td:before {
+					content: attr(data-l);
+					color: var(--muted);
+					font-size: 13px;
+					text-align: left;
+					flex: none;
+				}
+				.bk tbody tr:hover td {
+					background: none;
+				}
+				.tools input {
+					width: 100%;
 				}
 				.tools .prev {
 					margin-left: 0;
@@ -823,7 +835,7 @@
 						<rect x="3" y="16" width="7" height="5" rx="2" /></svg
 					>Overview</a
 				>
-				<a href="#" aria-current="page"
+				<a href="#"
 					><svg viewBox="0 0 24 24">
 						<path d="M4 11l8-7 8 7v9H4z" /></svg
 					>My properties</a
@@ -836,7 +848,7 @@
 						<rect x="13" y="13" width="7" height="7" rx="2" /></svg
 					>Rooms</a
 				>
-				<a href="#"
+				<a href="#" aria-current="page"
 					><svg viewBox="0 0 24 24">
 						<rect x="4" y="5" width="16" height="15" rx="2" />
 						<path d="M8 3v4M16 3v4M4 10h16" /></svg
@@ -867,48 +879,45 @@
 			<div>
 				<div class="top">
 					<span class="crumb"
-						><b style="color: var(--text)">My properties</b></span
+						><b style="color: var(--text)">Bookings</b></span
 					>
 				</div>
 				<main>
 					<div class="head">
 						<div>
-							<h1>My properties</h1>
-							<p>Track each listing, from draft to live.</p>
+							<h1>Bookings and tenants</h1>
+							<p>
+								Every annual booking across your properties,
+								with payment and tenancy status.
+							</p>
 						</div>
-						<button
-							class="btn"
-							type="button"
-							onclick="toast('Opens the Add property flow')"
-						>
-							+ Add property
-						</button>
 					</div>
-					<div
-						class="tabs"
-						id="tabs"
-						role="group"
-						aria-label="Filter by status"
-					></div>
 					<div class="tools">
 						<label
-							class="f"
-							style="
-								flex-direction: row;
-								align-items: center;
-								gap: 10px;
-								flex: 1;
-								max-width: 340px;
-							"
-							><span
-								class="sr"
-								style="position: absolute; left: -9999px"
-								>Search properties</span
+							><span style="position: absolute; left: -9999px"
+								>Search bookings</span
 							><input
 								type="text"
 								id="q"
-								placeholder="Search by name or area"
+								placeholder="Search tenant, reference or room"
 						/></label>
+						<select id="fp" aria-label="Property">
+							<option value="">All properties</option>
+							<option>The Haven Studios</option>
+							<option>Palm Court Living</option>
+						</select>
+						<select id="fy" aria-label="Payment status">
+							<option value="">All payments</option>
+							<option>Paid</option>
+							<option>Pending</option>
+							<option>Failed</option>
+						</select>
+						<select id="ft" aria-label="Tenancy">
+							<option value="">All tenancies</option>
+							<option value="active">Active</option>
+							<option value="soon">Ending in 60 days</option>
+							<option value="ended">Ended</option>
+						</select>
 						<div class="prev">
 							<label for="ps">Preview state (design only)</label
 							><select id="ps">
@@ -919,170 +928,180 @@
 							</select>
 						</div>
 					</div>
-					<div id="g" aria-live="polite"></div>
+					<div class="tw" id="tw"></div>
+					<div class="pg" id="pg"></div>
 					<p class="tag">
-						Sample data shown for design purposes only. Only
-						Approved properties appear in public search. Changes to
-						an approved listing are reviewed before they go live.
+						Sample data shown for design purposes only. A booking is
+						confirmed only after StayHub verifies the payment.
+						Tenant details are limited to what you need to manage
+						the booking.
 					</p>
 				</main>
 			</div>
 		</div>
 		<div class="toast" id="tt" role="status"></div>
 		<script>
-			const P = [
-				{
-					n: "The Haven Studios",
-					a: "Akoka, near University A",
-					s: "ok",
-					r: 16,
-					av: 7,
-					p: 450000,
-					u: "12 Nov 2026",
-				},
-				{
-					n: "Palm Court Living",
-					a: "Yaba, near University B",
-					s: "ok",
-					r: 8,
-					av: 3,
-					p: 380000,
-					u: "2 Nov 2026",
-				},
-				{
-					n: "Green Gate Lodge",
-					a: "Akoka, near University A",
-					s: "wait",
-					r: 12,
-					av: 12,
-					p: 420000,
-					u: "16 Nov 2026",
-					sub: "16 Nov 2026",
-				},
-				{
-					n: "Unity Hall",
-					a: "Yaba, near University B",
-					s: "chg",
-					r: 10,
-					av: 10,
-					p: 350000,
-					u: "14 Nov 2026",
-					why: "The photos don't show the actual rooms. Please upload photos of each room type and add the full street address.",
-					on: "15 Nov 2026",
-				},
-				{
-					n: "Campus Edge Rooms",
-					a: "Not added yet",
-					s: "draft",
-					r: 0,
-					av: 0,
-					p: 0,
-					u: "9 Nov 2026",
-					step: 2,
-				},
-				{
-					n: "Old Mill Court",
-					a: "Surulere",
-					s: "bad",
-					r: 6,
-					av: 6,
-					p: 300000,
-					u: "28 Oct 2026",
-					why: "We couldn't confirm that this property exists at the address given. Contact support if you think this is a mistake.",
-					on: "30 Oct 2026",
-				},
-			];
-			const L = {
-				ok: ["Approved", "b-ok"],
-				wait: ["Pending review", "b-wait"],
-				chg: ["Changes required", "b-chg"],
-				draft: ["Draft", "b-draft"],
-				bad: ["Rejected", "b-bad"],
-			};
-			const TABS = [
-				["all", "All"],
-				["ok", "Approved"],
-				["wait", "Pending review"],
-				["chg", "Changes required"],
-				["draft", "Draft"],
-				["bad", "Rejected"],
-			];
 			const $ = (s) => document.querySelector(s),
-				naira = (n) => "₦" + Number(n).toLocaleString("en-NG");
-			let f = "all",
-				ps = "n";
-			function acts(p) {
+				naira = (n) => "₦" + Number(n).toLocaleString("en-NG"),
+				TODAY = new Date("2026-11-18"),
+				PER = 10;
+			const fmt = (s) =>
+				new Date(s).toLocaleDateString("en-GB", {
+					day: "numeric",
+					month: "short",
+					year: "numeric",
+				});
+			const N = [
+				"Amaka Okafor",
+				"Tunde Adeyemi",
+				"Ngozi Eze",
+				"Ibrahim Sani",
+				"Chidera Nwosu",
+				"Bola Kehinde",
+				"Funke Alabi",
+				"Emeka Obi",
+				"Zainab Musa",
+				"Seun Ajayi",
+				"Kelechi Uche",
+				"Halima Bello",
+				"David Ojo",
+			];
+			const U = ["University A", "University B"],
+				PR = ["The Haven Studios", "Palm Court Living"];
+			const R = Array.from({ length: 27 }, (_, i) => {
+				const pay =
+						i % 9 == 4
+							? "Pending"
+							: i % 13 == 7
+								? "Failed"
+								: "Paid",
+					st =
+						i % 5 == 3
+							? "2026-01-15"
+							: i % 7 == 2
+								? "2025-12-15"
+								: "2026-09-01";
+				const en = new Date(st);
+				en.setFullYear(en.getFullYear() + 1);
+				en.setDate(en.getDate() - 1);
 				return {
-					ok: '<button class="btn g" type="button">Manage rooms</button><button class="btn t" type="button">View public listing</button>',
-					wait: '<button class="btn g" type="button">View submission</button>',
-					chg: '<button class="btn" type="button">Edit and resubmit</button>',
-					draft: '<button class="btn" type="button">Continue editing</button><button class="btn t" type="button">Delete draft</button>',
-					bad: '<button class="btn g" type="button">Contact support</button>',
-				}[p.s];
+					ref: "SH-" + (24100 + i * 7),
+					n: N[i % 13],
+					u: U[i % 2],
+					p: PR[i % 2],
+					room: "Room " + ((i % 16) + 1),
+					st,
+					en: en.toISOString().slice(0, 10),
+					price: [450000, 600000, 300000, 380000][i % 4],
+					pay,
+					bk: pay == "Paid" ? "Confirmed" : "Awaiting payment",
+				};
+			});
+			function ten(r) {
+				if (r.pay != "Paid") return ["–", ""];
+				const d = Math.round((new Date(r.en) - TODAY) / 864e5);
+				return d < 0
+					? ["ended", ""]
+					: d <= 60
+						? ["soon", d]
+						: ["active", ""];
 			}
-			function info(p) {
-				if (p.s == "draft")
-					return `<div class="m">${p.a}</div><span class="prog" style="display:block"><i style="width:${p.step * 25}%"></i></span><div class="m" style="margin:6px 0 0">Step ${p.step} of 4 complete</div>`;
-				return `<div class="m">${p.a}</div><div class="facts"><div><span>Rooms</span><br><b>${p.r}</b></div><div><span>${p.s == "ok" ? "Available" : "Rooms ready"}</span><br><b>${p.av}</b></div><div><span>From</span><br><b>${naira(p.p)} / year</b></div><div><span>${p.s == "wait" ? "Submitted" : "Updated"}</span><br><b>${p.sub || p.u}</b></div></div>`;
-			}
-			function card(p) {
-				const [l, c] = L[p.s];
-				return `<article class="pc"><div class="pt" role="img" aria-label="Cover photo placeholder">Cover photo</div><div><h3>${p.n}</h3><span class="badge ${c}" style="margin:6px 0 4px"><span>${l}</span></span>${info(p)}</div><div class="acts">${acts(p)}</div>
-${p.s == "chg" || p.s == "bad" ? `<div class="cl ${p.s == "bad" ? "r" : ""}"><b>${p.s == "bad" ? "Reason for rejection" : "What to fix"} · StayHub review team, ${p.on}</b>${p.why}</div>` : ""}
-${p.s == "wait" ? `<div class="cl" style="border-left-color:var(--wait)"><b>Under review</b>We'll email you when it's approved or if we need changes. It won't appear in search until then.</div>` : ""}</article>`;
+			let sk = "",
+				dir = 1,
+				pg = 1,
+				ps = "n";
+			const cmp = {
+				n: (a, b) => a.n.localeCompare(b.n),
+				en: (a, b) => a.en.localeCompare(b.en),
+				price: (a, b) => a.price - b.price,
+			};
+			function badge(t, c) {
+				return `<span class="badge ${c}"><span>${t}</span></span>`;
 			}
 			function draw() {
-				const c = { all: P.length };
-				P.forEach((p) => (c[p.s] = (c[p.s] || 0) + 1));
-				$("#tabs").innerHTML = TABS.map(
-					([k, t]) =>
-						`<button class="tab" data-f="${k}" aria-pressed="${f == k}">${t}<em>${ps == "n" ? c[k] || 0 : "–"}</em></button>`,
-				).join("");
-				document.querySelectorAll(".tab").forEach(
-					(b) =>
-						(b.onclick = () => {
-							f = b.dataset.f;
-							draw();
-						}),
-				);
-				const g = $("#g"),
-					q = $("#q").value.trim().toLowerCase();
+				const w = $("#tw"),
+					q = $("#q").value.trim().toLowerCase(),
+					fp = $("#fp").value,
+					fy = $("#fy").value,
+					ft = $("#ft").value;
 				if (ps == "l") {
-					g.innerHTML =
-						'<div class="sk"></div><div class="sk"></div><div class="sk"></div>';
+					w.innerHTML = '<div class="sk"></div>'.repeat(6);
+					$("#pg").innerHTML = "";
 					return;
 				}
 				if (ps == "x") {
-					g.innerHTML =
-						'<div class="msg e" role="alert"><h3>We couldn\'t load your properties</h3><p>Check your connection and try again. Nothing has been lost.</p><button class="btn" onclick="ps=\'n\';$(\'#ps\').value=\'n\';draw()">Try again</button></div>';
+					w.innerHTML =
+						"<div class=\"msg e\" role=\"alert\"><h3>We couldn't load your bookings</h3><p>Check your connection and try again. Your bookings haven't changed.</p><button class=\"btn\" onclick=\"ps='n';$('#ps').value='n';draw()\">Try again</button></div>";
+					$("#pg").innerHTML = "";
 					return;
 				}
-				const list =
+				let L =
 					ps == "e"
 						? []
-						: P.filter(
-								(p) =>
-									(f == "all" || p.s == f) &&
+						: R.filter(
+								(r) =>
 									(!q ||
-										(p.n + p.a).toLowerCase().includes(q)),
+										(r.n + r.ref + r.room)
+											.toLowerCase()
+											.includes(q)) &&
+									(!fp || r.p == fp) &&
+									(!fy || r.pay == fy) &&
+									(!ft || ten(r)[0] == ft),
 							);
-				if (!list.length) {
+				if (sk) L = [...L].sort((a, b) => dir * cmp[sk](a, b));
+				if (!L.length) {
 					const e = ps == "e";
-					g.innerHTML = `<div class="msg"><h3>${e ? "You haven't added a property yet" : "No properties match"}</h3><p>${e ? "Add your first property. It goes live once the StayHub team approves it." : "Try another status or a different search."}</p><button class="btn ${e ? "" : "g"}" onclick="${e ? "toast('Opens the Add property flow')" : "f='all';$('#q').value='';draw()"}">${e ? "+ Add property" : "Clear filters"}</button></div>`;
+					w.innerHTML = `<div class="msg"><h3>${e ? "No bookings yet" : "No bookings match"}</h3><p>${e ? "Bookings appear here after a student pays for a room." : "Try a different search or clear a filter."}</p>${e ? "" : '<button class="btn g" onclick="clr()">Clear filters</button>'}</div>`;
+					$("#pg").innerHTML = "";
 					return;
 				}
-				g.innerHTML = list.map(card).join("");
+				const pages = Math.ceil(L.length / PER);
+				pg = Math.min(pg, pages);
+				const s = (pg - 1) * PER,
+					V = L.slice(s, s + PER);
+				const th = (k, t) =>
+					`<th scope="col" ${sk == k ? `aria-sort="${dir > 0 ? "ascending" : "descending"}"` : ""}><button onclick="srt('${k}')">${t}<span aria-hidden="true">${sk == k ? (dir > 0 ? "↑" : "↓") : "↕"}</span></button></th>`;
+				w.innerHTML = `<table class="bk"><thead><tr><th scope="col">Reference</th>${th("n", "Tenant")}<th scope="col">Room</th>${th("en", "Tenancy")}${th("price", "Price per year")}<th scope="col">Payment</th><th scope="col">Booking</th></tr></thead><tbody>${V.map(
+					(r) => {
+						const [t, d] = ten(r);
+						return `<tr tabindex="0" onclick="toast('Opens booking ${r.ref}')" onkeydown="if(event.key=='Enter')this.click()">
+<td data-l="Reference" class="ref">${r.ref}</td><td data-l="Tenant" class="t"><div><b>${r.n}</b><span>Student, ${r.u}</span></div></td><td data-l="Room"><div>${r.room}<br><span class="sm">${r.p}</span></div></td>
+<td data-l="Tenancy"><div>${r.pay == "Paid" ? `${fmt(r.st)} – ${fmt(r.en)}` : "Starts once paid"}${t == "soon" ? `<br><span class="soon">Ends in ${d} days</span>` : t == "ended" ? '<br><span class="sm">Ended</span>' : t == "active" ? '<br><span class="sm">Active</span>' : ""}</div></td>
+<td data-l="Price" class="pr">${naira(r.price)}</td><td data-l="Payment">${badge(r.pay == "Paid" ? "Paid" : r.pay, r.pay == "Paid" ? "b-ok" : r.pay == "Pending" ? "b-wait" : "b-bad")}</td><td data-l="Booking">${badge(r.bk, r.bk == "Confirmed" ? "b-ok" : "b-wait")}</td></tr>`;
+					},
+				).join("")}</tbody></table>`;
+				$("#pg").innerHTML =
+					`<span>Showing ${s + 1}–${s + V.length} of ${L.length} bookings</span><div><button class="btn g" ${pg == 1 ? "disabled" : ""} onclick="pg--;draw()">Previous</button><button class="btn g" ${pg == pages ? "disabled" : ""} onclick="pg++;draw()">Next</button></div>`;
+			}
+			function srt(k) {
+				dir = sk == k ? -dir : 1;
+				sk = k;
+				draw();
+			}
+			function clr() {
+				["q", "fp", "fy", "ft"].forEach((i) => ($("#" + i).value = ""));
+				pg = 1;
+				draw();
 			}
 			function toast(m) {
 				const t = $("#tt");
 				t.textContent = m;
 				t.style.display = "block";
 				clearTimeout(t.h);
-				t.h = setTimeout(() => (t.style.display = "none"), 2200);
+				t.h = setTimeout(() => (t.style.display = "none"), 2000);
 			}
-			$("#q").oninput = draw;
+			["q", "fp", "fy", "ft"].forEach((i) =>
+				$("#" + i).addEventListener(
+					i == "q" ? "input" : "change",
+					() => {
+						pg = 1;
+						draw();
+					},
+				),
+			);
 			$("#ps").onchange = (e) => {
 				ps = e.target.value;
+				pg = 1;
 				draw();
 			};
 			ps = "l";
